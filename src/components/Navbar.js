@@ -13,7 +13,7 @@ export default function Navbar({ data }) {
           {icons[0]}
           <VStack ml={3} spacing={0} align="left">
             <Text fontSize={{ lg: "4xl", md: "xl" }}>
-              <strong>KopitTracker</strong>
+              <strong>CovidTracker</strong>
             </Text>
             <Text>By Vincent Haryadi</Text>
             {/* <Link>By Vincent Haryadi</Link> */}

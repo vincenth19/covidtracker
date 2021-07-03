@@ -3,6 +3,7 @@ import { Box, Text, Container, ChakraProvider } from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
 import KopitCase from "./components/kopitCase";
 import Vaccination from "./components/vaccination";
+import Hospitalization from "./components/hospitalization";
 
 function App() {
   const [caseData, setCaseData] = useState(0);
@@ -60,6 +61,11 @@ function App() {
             changesCounter={changesCounter}
           />
           <Vaccination vaccData={vaccination} />
+          <Hospitalization
+            caseData={caseData}
+            caseYesterday={caseYesterday}
+            changesCounter={changesCounter}
+          />
         </Container>
       </Box>
     </ChakraProvider>

@@ -3,13 +3,20 @@ import {
   Flex,
   Box,
   Text,
+  SkeletonText,
   Stat,
   StatLabel,
+  StatHelpText,
   StatNumber,
-  SkeletonText,
+  StatArrow,
 } from "@chakra-ui/react";
 import { MdLocalHospital } from "react-icons/md";
-import { RiEmotionUnhappyFill, RiEmotionUnhappyLine } from "react-icons/ri";
+import {
+  RiEmotionUnhappyFill,
+  RiEmotionUnhappyLine,
+  RiHeartFill,
+  RiHeartLine,
+} from "react-icons/ri";
 
 export default function Mortality({ caseData, caseYesterday, changesCounter }) {
   return (
@@ -125,9 +132,9 @@ export default function Mortality({ caseData, caseYesterday, changesCounter }) {
           bg="white"
         >
           <Flex alignContent="center" align="center">
-            <Box p={2} bg="yellow.100" borderRadius={10} mr={4}>
-              <Text fontSize="2rem" color="yellow.800">
-                <RiEmotionUnhappyFill />
+            <Box p={2} bg="teal.100" borderRadius={10} mr={4}>
+              <Text fontSize="2rem" color="teal.800">
+                <RiHeartFill />
               </Text>
             </Box>
             <Stat>
@@ -173,9 +180,9 @@ export default function Mortality({ caseData, caseYesterday, changesCounter }) {
           bg="white"
         >
           <Flex alignContent="center" align="center">
-            <Box p={2} bg="gray.100" borderRadius={10} mr={4}>
-              <Text fontSize="2rem" color="gray.800">
-                <GiTombstone />
+            <Box p={2} bg="teal.100" borderRadius={10} mr={4}>
+              <Text fontSize="2rem" color="teal.800">
+                <RiHeartLine />
               </Text>
             </Box>
             <Stat>
@@ -185,23 +192,17 @@ export default function Mortality({ caseData, caseYesterday, changesCounter }) {
               {caseData ? (
                 <>
                   <StatNumber>
-                    {caseData.meninggal.toLocaleString("en-US")}
+                    {caseData.sembuh.toLocaleString("en-US")}
                   </StatNumber>
                   {}
                   <StatHelpText>
-                    {changesCounter(
-                      caseData.meninggal,
-                      caseYesterday.meninggal
-                    ) > 0 ? (
+                    {changesCounter(caseData.sembuh, caseYesterday.sembuh) >
+                    0 ? (
                       <StatArrow type="increase" color="red.500" />
                     ) : (
                       <StatArrow type="decrease" color="teal.500" />
                     )}
-                    {changesCounter(
-                      caseData.meninggal,
-                      caseYesterday.meninggal
-                    )}{" "}
-                    %
+                    {changesCounter(caseData.sembuh, caseYesterday.sembuh)} %
                   </StatHelpText>
                 </>
               ) : (
