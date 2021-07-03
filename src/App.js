@@ -38,7 +38,7 @@ function App() {
 
   useEffect(() => {
     apiGet(
-      "http://apicovid19indonesia-v2.vercel.app/api/indonesia/harian",
+      "https://apicovid19indonesia-v2.vercel.app/api/indonesia/harian",
       setData1
     );
     apiGet("https://vaksincovid19-api.vercel.app/api/vaksin", setVaccination);
