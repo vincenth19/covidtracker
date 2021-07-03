@@ -15,8 +15,8 @@ import {
   RiVirusLine,
   RiVirusFill,
   RiSurgicalMaskFill,
-  RiSkullFill,
-  RiSkullLine,
+  RiEmotionUnhappyFill,
+  RiEmotionUnhappyLine,
 } from "react-icons/ri";
 
 export default function Vaccination({
@@ -140,7 +140,7 @@ export default function Vaccination({
           <Flex alignContent="center" align="center">
             <Box p={2} bg="gray.100" borderRadius={10} mr={4}>
               <Text fontSize="2rem" color="gray.800">
-                <RiSkullFill />
+                <RiEmotionUnhappyFill />
               </Text>
             </Box>
             <Stat>
@@ -188,7 +188,7 @@ export default function Vaccination({
           <Flex alignContent="center" align="center">
             <Box p={2} bg="gray.100" borderRadius={10} mr={4}>
               <Text fontSize="2rem" color="gray.800">
-                <RiSkullLine />
+                <RiEmotionUnhappyLine />
               </Text>
             </Box>
             <Stat>

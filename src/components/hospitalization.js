@@ -12,8 +12,8 @@ import {
 } from "@chakra-ui/react";
 import { MdLocalHospital } from "react-icons/md";
 import {
-  RiEmotionUnhappyFill,
-  RiEmotionUnhappyLine,
+  RiThermometerFill,
+  RiThermometerLine,
   RiHeartFill,
   RiHeartLine,
 } from "react-icons/ri";
@@ -49,7 +49,7 @@ export default function Mortality({
           <Flex alignContent="center" align="center">
             <Box p={2} bg="yellow.100" borderRadius={10} mr={4}>
               <Text fontSize="2rem" color="yellow.800">
-                <RiEmotionUnhappyFill />
+                <RiThermometerFill />
               </Text>
             </Box>
             <Stat>
@@ -97,7 +97,7 @@ export default function Mortality({
           <Flex alignContent="center" align="center">
             <Box p={2} bg="yellow.100" borderRadius={10} mr={4}>
               <Text fontSize="2rem" color="yellow.800">
-                <RiEmotionUnhappyLine />
+                <RiThermometerLine />
               </Text>
             </Box>
             <Stat>
