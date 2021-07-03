@@ -143,9 +143,15 @@ export default function Mortality({
                     <StatHelpText>
                       {changesCounter(key.data, yesterdayArr[index].data) >
                       0 ? (
-                        <StatArrow type="increase" color="red.500" />
+                        <StatArrow
+                          type="increase"
+                          color={key.increaseArrowColor}
+                        />
                       ) : (
-                        <StatArrow type="decrease" color="teal.500" />
+                        <StatArrow
+                          type="decrease"
+                          color={key.decreaseArrowColor}
+                        />
                       )}
                       {changesCounter(key.data, yesterdayArr[index].data)} %
                     </StatHelpText>
