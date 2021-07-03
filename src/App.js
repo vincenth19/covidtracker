@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { Box, Text, Container, ChakraProvider } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Container,
+  ChakraProvider,
+  Divider,
+} from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
 import KopitCase from "./components/kopitCase";
 import Vaccination from "./components/vaccination";
@@ -55,17 +61,23 @@ function App() {
           <Text fontSize="3xl" pt={5} pb={2}>
             <strong>Indonesia </strong>
           </Text>
+          <Divider />
           <KopitCase
+            py={3}
             caseData={caseData}
             caseYesterday={caseYesterday}
             changesCounter={changesCounter}
           />
-          <Vaccination vaccData={vaccination} />
+          <Divider />
+          <Vaccination py={3} vaccData={vaccination} />
+          <Divider />
           <Hospitalization
+            py={3}
             caseData={caseData}
             caseYesterday={caseYesterday}
             changesCounter={changesCounter}
           />
+          <Divider />
         </Container>
       </Box>
     </ChakraProvider>

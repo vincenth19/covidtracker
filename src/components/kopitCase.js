@@ -23,10 +23,11 @@ export default function Vaccination({
   caseData,
   caseYesterday,
   changesCounter,
+  ...props
 }) {
   return (
-    <>
-      <HStack py={3}>
+    <Box {...props}>
+      <HStack pb={2}>
         <Text fontSize="4xl" color="teal.400">
           <RiSurgicalMaskFill />
         </Text>
@@ -223,6 +224,6 @@ export default function Vaccination({
           </Flex>
         </Box>
       </Flex>
-    </>
+    </Box>
   );
 }

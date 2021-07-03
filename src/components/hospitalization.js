@@ -18,10 +18,15 @@ import {
   RiHeartLine,
 } from "react-icons/ri";
 
-export default function Mortality({ caseData, caseYesterday, changesCounter }) {
+export default function Mortality({
+  caseData,
+  caseYesterday,
+  changesCounter,
+  ...props
+}) {
   return (
-    <>
-      <HStack py={3}>
+    <Box {...props}>
+      <HStack pb={2}>
         <Text fontSize="4xl" color="red.400">
           <MdLocalHospital />
         </Text>
@@ -152,9 +157,9 @@ export default function Mortality({ caseData, caseYesterday, changesCounter }) {
                       caseData.sembuh_kumulatif,
                       caseYesterday.sembuh_kumulatif
                     ) > 0 ? (
-                      <StatArrow type="increase" color="red.500" />
+                      <StatArrow type="increase" />
                     ) : (
-                      <StatArrow type="decrease" color="teal.500" />
+                      <StatArrow type="decrease" />
                     )}
                     {changesCounter(
                       caseData.sembuh_kumulatif,
@@ -198,9 +203,9 @@ export default function Mortality({ caseData, caseYesterday, changesCounter }) {
                   <StatHelpText>
                     {changesCounter(caseData.sembuh, caseYesterday.sembuh) >
                     0 ? (
-                      <StatArrow type="increase" color="red.500" />
+                      <StatArrow type="increase" />
                     ) : (
-                      <StatArrow type="decrease" color="teal.500" />
+                      <StatArrow type="decrease" />
                     )}
                     {changesCounter(caseData.sembuh, caseYesterday.sembuh)} %
                   </StatHelpText>
@@ -212,6 +217,6 @@ export default function Mortality({ caseData, caseYesterday, changesCounter }) {
           </Flex>
         </Box>
       </Flex>
-    </>
+    </Box>
   );
 }
