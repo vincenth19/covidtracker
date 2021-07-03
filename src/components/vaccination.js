@@ -11,10 +11,10 @@ import {
 import { RiSyringeFill } from "react-icons/ri";
 import { BiTargetLock } from "react-icons/bi";
 
-export default function Vaccination({ vaccData }) {
+export default function Vaccination({ vaccData, ...props }) {
   return (
-    <>
-      <HStack py={3}>
+    <Box {...props}>
+      <HStack pb={2}>
         <Text fontSize="4xl" color="blue.400">
           <RiSyringeFill />
         </Text>
@@ -120,6 +120,6 @@ export default function Vaccination({ vaccData }) {
           </Flex>
         </Box>
       </Flex>
-    </>
+    </Box>
   );
 }
