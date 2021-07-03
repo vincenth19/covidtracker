@@ -51,7 +51,7 @@ function App() {
           <Navbar
             data={caseData && new Date(caseData.tanggal).toLocaleDateString()}
           />
-          <Text fontSize="3xl" py={5}>
+          <Text fontSize="3xl" pt={5} pb={2}>
             <strong>Indonesia </strong>
           </Text>
           <KopitCase

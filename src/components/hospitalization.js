@@ -3,40 +3,28 @@ import {
   Flex,
   Box,
   Text,
-  SkeletonText,
   Stat,
   StatLabel,
-  StatHelpText,
   StatNumber,
-  StatArrow,
+  SkeletonText,
 } from "@chakra-ui/react";
+import { MdLocalHospital } from "react-icons/md";
+import { RiEmotionUnhappyFill, RiEmotionUnhappyLine } from "react-icons/ri";
 
-import {
-  RiVirusLine,
-  RiVirusFill,
-  RiSurgicalMaskFill,
-  RiSkullFill,
-  RiSkullLine,
-} from "react-icons/ri";
-
-export default function Vaccination({
-  caseData,
-  caseYesterday,
-  changesCounter,
-}) {
+export default function Mortality({ caseData, caseYesterday, changesCounter }) {
   return (
     <>
       <HStack py={3}>
-        <Text fontSize="4xl" color="teal.400">
-          <RiSurgicalMaskFill />
+        <Text fontSize="4xl" color="red.400">
+          <MdLocalHospital />
         </Text>
         <Text fontSize="lg">
-          <strong>Kasus COVID-19</strong>
+          <strong>Rawat Inap</strong>
         </Text>
       </HStack>
 
       <Flex flexWrap="wrap" alignContent="stretch">
-        {/* satu */}
+        {/* total dirawat */}
         <Box
           mr={2}
           mb={2}
@@ -47,33 +35,33 @@ export default function Vaccination({
           bg="white"
         >
           <Flex alignContent="center" align="center">
-            <Box p={2} bg="red.100" borderRadius={10} mr={4}>
-              <Text fontSize="2rem" color="red.800">
-                <RiVirusFill />
+            <Box p={2} bg="yellow.100" borderRadius={10} mr={4}>
+              <Text fontSize="2rem" color="yellow.800">
+                <RiEmotionUnhappyFill />
               </Text>
             </Box>
             <Stat>
               <StatLabel fontSize="0.65em" color="gray.500">
-                TOTAL KASUS POSITIF
+                TOTAL RAWATAN
               </StatLabel>
               {caseData ? (
                 <>
                   <StatNumber>
-                    {caseData.positif_kumulatif.toLocaleString("en-US")}
+                    {caseData.dirawat_kumulatif.toLocaleString("en-US")}
                   </StatNumber>
                   {}
                   <StatHelpText>
                     {changesCounter(
-                      caseData.positif_kumulatif,
-                      caseYesterday.positif_kumulatif
+                      caseData.dirawat_kumulatif,
+                      caseYesterday.dirawat_kumulatif
                     ) > 0 ? (
                       <StatArrow type="increase" color="red.500" />
                     ) : (
                       <StatArrow type="decrease" color="teal.500" />
                     )}
                     {changesCounter(
-                      caseData.positif_kumulatif,
-                      caseYesterday.positif_kumulatif
+                      caseData.dirawat_kumulatif,
+                      caseYesterday.dirawat_kumulatif
                     )}{" "}
                     %
                   </StatHelpText>
@@ -84,7 +72,7 @@ export default function Vaccination({
             </Stat>
           </Flex>
         </Box>
-        {/* hr ini */}
+        {/* dirawat hr ini */}
         <Box
           mr={2}
           mb={2}
@@ -95,29 +83,29 @@ export default function Vaccination({
           bg="white"
         >
           <Flex alignContent="center" align="center">
-            <Box p={2} bg="red.100" borderRadius={10} mr={4}>
-              <Text fontSize="2rem" color="red.800">
-                <RiVirusLine />
+            <Box p={2} bg="yellow.100" borderRadius={10} mr={4}>
+              <Text fontSize="2rem" color="yellow.800">
+                <RiEmotionUnhappyLine />
               </Text>
             </Box>
             <Stat>
               <StatLabel fontSize="0.65em" color="gray.500">
-                KASUS HARI INI
+                RAWATAN HARI INI
               </StatLabel>
               {caseData ? (
                 <>
                   <StatNumber>
-                    {caseData.positif.toLocaleString("en-US")}
+                    {caseData.dirawat.toLocaleString("en-US")}
                   </StatNumber>
                   {}
                   <StatHelpText>
-                    {changesCounter(caseData.positif, caseYesterday.positif) >
+                    {changesCounter(caseData.dirawat, caseYesterday.dirawat) >
                     0 ? (
                       <StatArrow type="increase" color="red.500" />
                     ) : (
                       <StatArrow type="decrease" color="teal.500" />
                     )}
-                    {changesCounter(caseData.positif, caseYesterday.positif)} %
+                    {changesCounter(caseData.dirawat, caseYesterday.dirawat)} %
                   </StatHelpText>
                 </>
               ) : (
@@ -126,7 +114,7 @@ export default function Vaccination({
             </Stat>
           </Flex>
         </Box>
-        {/* kematian */}
+        {/* total KESEMBUHAN */}
         <Box
           mr={2}
           mb={2}
@@ -137,33 +125,33 @@ export default function Vaccination({
           bg="white"
         >
           <Flex alignContent="center" align="center">
-            <Box p={2} bg="gray.100" borderRadius={10} mr={4}>
-              <Text fontSize="2rem" color="gray.800">
-                <RiSkullFill />
+            <Box p={2} bg="yellow.100" borderRadius={10} mr={4}>
+              <Text fontSize="2rem" color="yellow.800">
+                <RiEmotionUnhappyFill />
               </Text>
             </Box>
             <Stat>
               <StatLabel fontSize="0.65em" color="gray.500">
-                TOTAL KEMATIAN
+                TOTAL KESEMBUHAN
               </StatLabel>
               {caseData ? (
                 <>
                   <StatNumber>
-                    {caseData.meninggal_kumulatif.toLocaleString("en-US")}
+                    {caseData.sembuh_kumulatif.toLocaleString("en-US")}
                   </StatNumber>
                   {}
                   <StatHelpText>
                     {changesCounter(
-                      caseData.meninggal_kumulatif,
-                      caseYesterday.meninggal_kumulatif
+                      caseData.sembuh_kumulatif,
+                      caseYesterday.sembuh_kumulatif
                     ) > 0 ? (
                       <StatArrow type="increase" color="red.500" />
                     ) : (
                       <StatArrow type="decrease" color="teal.500" />
                     )}
                     {changesCounter(
-                      caseData.meninggal_kumulatif,
-                      caseYesterday.meninggal_kumulatif
+                      caseData.sembuh_kumulatif,
+                      caseYesterday.sembuh_kumulatif
                     )}{" "}
                     %
                   </StatHelpText>
@@ -174,7 +162,7 @@ export default function Vaccination({
             </Stat>
           </Flex>
         </Box>
-        {/* kematian hr ini */}
+        {/* KESEMBUHAN hr ini */}
         <Box
           mr={2}
           mb={2}
@@ -187,12 +175,12 @@ export default function Vaccination({
           <Flex alignContent="center" align="center">
             <Box p={2} bg="gray.100" borderRadius={10} mr={4}>
               <Text fontSize="2rem" color="gray.800">
-                <RiSkullLine />
+                <GiTombstone />
               </Text>
             </Box>
             <Stat>
               <StatLabel fontSize="0.65em" color="gray.500">
-                KEMATIAN HARI INI
+                KESEMBUHAN HARI INI
               </StatLabel>
               {caseData ? (
                 <>
