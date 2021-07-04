@@ -20,7 +20,7 @@ import {
 } from "react-icons/ri";
 
 export default function Mortality({
-  caseData,
+  caseToday,
   caseYesterday,
   changesCounter,
   ...props
@@ -30,27 +30,27 @@ export default function Mortality({
   let todayArr = [];
   let yesterdayArr = [];
 
-  if (caseData && caseYesterday) {
+  if (caseToday && caseYesterday) {
     for (let i = 0; i < 2; i++) {
       if (i === 0) {
         let {
-          positif,
-          positif_kumulatif,
-          meninggal,
-          meninggal_kumulatif,
-          lastUpdate,
-          tanggal,
+          jumlah_positif,
+          jumlah_positif_kum,
+          jumlah_meninggal,
+          jumlah_meninggal_kum,
+          key,
+          key_as_string,
           ...data1
-        } = caseData;
+        } = caseToday;
         today = data1;
       } else if (i === 1) {
         let {
-          positif,
-          positif_kumulatif,
-          meninggal,
-          meninggal_kumulatif,
-          lastUpdate,
-          tanggal,
+          jumlah_positif,
+          jumlah_positif_kum,
+          jumlah_meninggal,
+          jumlah_meninggal_kum,
+          key,
+          key_as_string,
           ...data2
         } = caseYesterday;
         yesterday = data2;
@@ -63,7 +63,7 @@ export default function Mortality({
         iconColor: "orange.500",
         icon: <RiThermometerFill />,
         cardTitle: "TOTAL RAWATAN",
-        data: today.dirawat_kumulatif,
+        data: today.jumlah_dirawat_kum.value,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
       },
@@ -72,7 +72,7 @@ export default function Mortality({
         iconColor: "orange.500",
         icon: <RiThermometerLine />,
         cardTitle: "RAWATAN HARI INI",
-        data: today.dirawat,
+        data: today.jumlah_dirawat.value,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
       },
@@ -81,7 +81,7 @@ export default function Mortality({
         iconColor: "teal.500",
         icon: <RiHeartFill />,
         cardTitle: "TOTAL KESEMBUHAN",
-        data: today.sembuh_kumulatif,
+        data: today.jumlah_sembuh_kum.value,
         increaseArrowColor: "teal.500",
         decreaseArrowColor: "red.500",
       },
@@ -90,16 +90,16 @@ export default function Mortality({
         iconColor: "teal.500",
         icon: <RiHeartLine />,
         cardTitle: "KESEMBUHAN HARI INI",
-        data: today.sembuh,
+        data: today.jumlah_sembuh.value,
         increaseArrowColor: "teal.500",
         decreaseArrowColor: "red.500",
       },
     ];
     yesterdayArr = [
-      { data: yesterday.dirawat_kumulatif },
-      { data: yesterday.dirawat },
-      { data: yesterday.sembuh_kumulatif },
-      { data: yesterday.sembuh },
+      { data: yesterday.jumlah_dirawat_kum.value },
+      { data: yesterday.jumlah_dirawat.value },
+      { data: yesterday.jumlah_sembuh_kum.value },
+      { data: yesterday.jumlah_sembuh.value },
     ];
   }
 
@@ -118,7 +118,7 @@ export default function Mortality({
         minChildWidth={{ lg: "23.5%", md: "47%", sm: "47%", base: "94%" }}
         spacing="2%"
       >
-        {caseData ? (
+        {caseToday ? (
           todayArr.map((key, index) => {
             return (
               <Box
@@ -139,7 +139,7 @@ export default function Mortality({
                     <StatLabel fontSize="0.65em" color="gray.500">
                       {key.cardTitle}
                     </StatLabel>
-                    <StatNumber>{key.data.toLocaleString("en-US")}</StatNumber>
+                    <StatNumber>{key.data}</StatNumber>
                     <StatHelpText>
                       {changesCounter(key.data, yesterdayArr[index].data) >
                       0 ? (

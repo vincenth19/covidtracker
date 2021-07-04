@@ -21,7 +21,7 @@ import {
 } from "react-icons/ri";
 
 export default function Vaccination({
-  caseData,
+  caseToday,
   caseYesterday,
   changesCounter,
   ...props
@@ -30,29 +30,30 @@ export default function Vaccination({
   let yesterday = {};
   let todayArr = [];
   let yesterdayArr = [];
-
   //rearranging and adding data key value for easy looping
-  if (caseData && caseYesterday) {
+  if (caseToday && caseYesterday) {
     for (let i = 0; i < 2; i++) {
       if (i === 0) {
         let {
-          dirawat,
-          sembuh,
-          dirawat_kumulatif,
-          sembuh_kumulatif,
-          lastUpdate,
-          tanggal,
+          jumlah_dirawat,
+          jumlah_sembuh,
+          jumlah_dirawat_kum,
+          jumlah_sembuh_kum,
+          key,
+          key_as_string,
+          doc_count,
           ...data1
-        } = caseData;
+        } = caseToday;
         today = data1;
       } else if (i === 1) {
         let {
-          dirawat,
-          sembuh,
-          dirawat_kumulatif,
-          sembuh_kumulatif,
-          lastUpdate,
-          tanggal,
+          jumlah_dirawat,
+          jumlah_sembuh,
+          jumlah_dirawat_kum,
+          jumlah_sembuh_kumu,
+          key,
+          key_as_string,
+          doc_count,
           ...data2
         } = caseYesterday;
         yesterday = data2;
@@ -65,7 +66,7 @@ export default function Vaccination({
         iconColor: "red.500",
         icon: <RiVirusFill />,
         cardTitle: "TOTAL KASUS POSITIF",
-        data: today.positif_kumulatif,
+        data: today.jumlah_positif_kum.value,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
       },
@@ -74,7 +75,7 @@ export default function Vaccination({
         iconColor: "red.500",
         icon: <RiVirusLine />,
         cardTitle: "KASUS POSITIF HARI INI",
-        data: today.positif,
+        data: today.jumlah_positif.value,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
       },
@@ -83,7 +84,7 @@ export default function Vaccination({
         iconColor: "gray.500",
         icon: <RiEmotionUnhappyFill />,
         cardTitle: "TOTAL KEMATIAN",
-        data: today.meninggal_kumulatif,
+        data: today.jumlah_meninggal_kum.value,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
       },
@@ -92,16 +93,16 @@ export default function Vaccination({
         iconColor: "gray.500",
         icon: <RiEmotionUnhappyLine />,
         cardTitle: "KEMATIAN HARI INI",
-        data: today.meninggal,
+        data: today.jumlah_meninggal.value,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
       },
     ];
     yesterdayArr = [
-      { data: yesterday.positif_kumulatif },
-      { data: yesterday.positif },
-      { data: yesterday.meninggal_kumulatif },
-      { data: yesterday.meninggal },
+      { data: yesterday.jumlah_positif_kum.value },
+      { data: yesterday.jumlah_positif.value },
+      { data: yesterday.jumlah_meninggal_kum.value },
+      { data: yesterday.jumlah_meninggal.value },
     ];
   }
 
@@ -120,7 +121,7 @@ export default function Vaccination({
         minChildWidth={{ lg: "23.5%", md: "47%", sm: "47%", base: "94%" }}
         spacing="2%"
       >
-        {caseData ? (
+        {caseToday ? (
           todayArr.map((key, index) => {
             return (
               <Box

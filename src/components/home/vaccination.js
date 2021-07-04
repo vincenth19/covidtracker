@@ -9,7 +9,6 @@ import {
   SkeletonText,
   SimpleGrid,
   StatHelpText,
-  Progress,
 } from "@chakra-ui/react";
 import { RiSyringeFill } from "react-icons/ri";
 import { BiTargetLock } from "react-icons/bi";

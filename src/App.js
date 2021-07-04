@@ -17,7 +17,6 @@ import {
   Switch,
   Route,
   NavLink,
-  Link,
   Redirect,
 } from "react-router-dom";
 import { RiExternalLinkLine, RiMenu3Fill } from "react-icons/ri";
@@ -27,18 +26,17 @@ import Footer from "./components/footer";
 import DataProvinsi from "./components/dataProvinsi/dataProvinsi";
 
 function App() {
-  const [caseData, setCaseData] = useState(0);
+  const [caseToday, setCaseToday] = useState(0);
   const [caseYesterday, setCaseYesterday] = useState(0);
   const [vaccination, setVaccination] = useState(0);
   const [error, setError] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [asd, setasd] = useState();
   const handleToggle = () => (isOpen ? onClose() : onOpen());
 
   function setData1(data) {
-    let top = data.pop();
-    setCaseData(top);
-    let dayMin1 = data.pop();
+    let top = data.update.update.harian.pop();
+    setCaseToday(top);
+    let dayMin1 = data.update.update.harian.pop();
     setCaseYesterday(dayMin1);
   }
 
@@ -50,8 +48,6 @@ function App() {
   }
 
   async function apiGet(apiURL, setter, queryParam = "") {
-    // const response = await fetch(apiURL + queryParam);
-    // const data = await response.json();
     fetch(apiURL + queryParam)
       .then((response) => response.json())
       .then((data) => {
@@ -62,28 +58,9 @@ function App() {
         console.error("There was an error!", error);
       });
   }
-  async function a() {
-    fetch("https://api.covidtracking.com/v2/us/daily/2021-01-02.json")
-      .then((response) => {
-        console.log("here");
-        response.json();
-        console.log(response);
-      })
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        setError(error.toString());
-        console.error("There was an error!", error);
-      });
-  }
   useEffect(() => {
-    apiGet(
-      "https://apicovid19indonesia-v2.vercel.app/api/indonesia/harian",
-      setData1
-    );
+    apiGet("https://disease.sh/v3/covid-19/gov/ID", setData1);
     apiGet("https://vaksincovid19-api.vercel.app/api/vaksin", setVaccination);
-    a();
   }, []);
 
   const ACTIVE_LINK = {
@@ -155,7 +132,7 @@ function App() {
                 </a>
                 <UpdateTime
                   date={
-                    caseData && new Date(caseData.tanggal).toLocaleDateString()
+                    caseToday && new Date(caseToday.key).toLocaleDateString()
                   }
                 />
               </Stack>
@@ -163,13 +140,16 @@ function App() {
             {/* router */}
 
             <Switch>
-              <Route path="/data-provinsi" component={DataProvinsi} />
+              <Route path="/data-provinsi">
+                <DataProvinsi />
+              </Route>
               <Route path="/home">
                 <Home
-                  caseData={caseData}
+                  caseToday={caseToday}
                   caseYesterday={caseYesterday}
                   vaccData={vaccination}
                   changesCounter={changesCounter}
+                  error={error}
                 />
               </Route>
               <Route exact path="/">
@@ -184,10 +164,6 @@ function App() {
     </ChakraProvider>
   );
 }
-
-const Eksdee = () => {
-  return <Text>asdfasdf</Text>;
-};
 
 function UpdateTime({ date, ...props }) {
   return (

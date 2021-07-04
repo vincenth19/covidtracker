@@ -22,12 +22,10 @@ export default function Footer() {
       <HStack
         mt={5}
         p={5}
-        bg="gray.100"
-        left="0"
-        bottom="0"
         width="full"
         justify="center"
-        borderTopRadius={10}
+        borderTopColor="gray.200"
+        borderTopWidth="1px"
       >
         <Text color="gray.500">By Vincent Haryadi</Text>
         <Button onClick={onOpen} colorScheme="red" variant="link">
