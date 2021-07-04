@@ -8,6 +8,8 @@ import {
   StatNumber,
   SkeletonText,
   SimpleGrid,
+  StatHelpText,
+  Progress,
 } from "@chakra-ui/react";
 import { RiSyringeFill } from "react-icons/ri";
 import { BiTargetLock } from "react-icons/bi";
@@ -34,6 +36,7 @@ export default function Vaccination({ vaccData, ...props }) {
         marginx: "0",
         cardTitle: "TOTAL TARGET FASE 1 & 2",
         data: data.totalsasaran,
+        helperText: "-",
       },
       {
         iconBg: "purple.100",
@@ -43,6 +46,7 @@ export default function Vaccination({ vaccData, ...props }) {
         marginx: "10px",
         cardTitle: "TOTAL VAKSINASI DOSIS 1",
         data: data.vaksinasi1,
+        helperText: ((data.vaksinasi1 / data.totalsasaran) * 100).toFixed(2),
       },
       {
         iconBg: "purple.100",
@@ -52,6 +56,7 @@ export default function Vaccination({ vaccData, ...props }) {
         marginx: "10px",
         cardTitle: "TOTAL VAKSINASI DOSIS 2",
         data: data.vaksinasi2,
+        helperText: ((data.vaksinasi2 / data.totalsasaran) * 100).toFixed(2),
       },
     ];
   }
@@ -96,6 +101,10 @@ export default function Vaccination({ vaccData, ...props }) {
                       {key.cardTitle}
                     </StatLabel>
                     <StatNumber>{key.data.toLocaleString("en-US")}</StatNumber>
+                    <StatHelpText>
+                      {key.helperText}
+                      {index !== 0 ? "%" : null}
+                    </StatHelpText>
                   </Stat>
                 </Flex>
               </Box>

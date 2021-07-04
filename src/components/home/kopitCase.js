@@ -155,7 +155,7 @@ export default function Vaccination({
                           color={key.decreaseArrowColor}
                         />
                       )}
-                      {changesCounter(key.data, yesterdayArr[index].data)} %
+                      {changesCounter(key.data, yesterdayArr[index].data)}%
                     </StatHelpText>
                   </Stat>
                 </Flex>
