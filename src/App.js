@@ -110,9 +110,9 @@ function App() {
 
               <Stack
                 direction={{ base: "column", md: "row" }}
-                display={{ base: isOpen ? "block" : "none", md: "flex" }}
+                display={{ base: isOpen ? "flex" : "none", md: "flex" }}
                 width={{ base: "full", md: "auto" }}
-                alignItems="center"
+                alignItems="right"
                 justifyContent="flex-end"
                 flexGrow={1}
                 mt={{ base: 4, md: 0 }}
@@ -125,11 +125,15 @@ function App() {
                   Data Provinsi
                 </NavLink>
                 {/* <Link>RS Rujukan</Link> */}
-                <Link href="https://google.com">
+                <a
+                  href="https://linkedin.com/in/vincenth19"
+                  target="_blank"
+                  rel="noopener"
+                >
                   <Flex align="center">
                     About Me <RiExternalLinkLine ml={7} />
                   </Flex>
-                </Link>
+                </a>
                 <UpdateTime
                   date={
                     caseData && new Date(caseData.tanggal).toLocaleDateString()
