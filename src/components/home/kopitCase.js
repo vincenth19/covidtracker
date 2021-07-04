@@ -19,6 +19,7 @@ import {
   RiEmotionUnhappyFill,
   RiEmotionUnhappyLine,
 } from "react-icons/ri";
+import CountUp from "react-countup";
 
 export default function Vaccination({
   caseToday,
@@ -26,84 +27,70 @@ export default function Vaccination({
   changesCounter,
   ...props
 }) {
-  let today = {};
-  let yesterday = {};
   let todayArr = [];
   let yesterdayArr = [];
   //rearranging and adding data key value for easy looping
   if (caseToday && caseYesterday) {
-    for (let i = 0; i < 2; i++) {
-      if (i === 0) {
-        let {
-          jumlah_dirawat,
-          jumlah_sembuh,
-          jumlah_dirawat_kum,
-          jumlah_sembuh_kum,
-          key,
-          key_as_string,
-          doc_count,
-          ...data1
-        } = caseToday;
-        today = data1;
-      } else if (i === 1) {
-        let {
-          jumlah_dirawat,
-          jumlah_sembuh,
-          jumlah_dirawat_kum,
-          jumlah_sembuh_kumu,
-          key,
-          key_as_string,
-          doc_count,
-          ...data2
-        } = caseYesterday;
-        yesterday = data2;
-      }
-    }
-
     todayArr = [
       {
         iconBg: "red.100",
         iconColor: "red.500",
         icon: <RiVirusFill />,
         cardTitle: "TOTAL KASUS POSITIF",
-        data: today.jumlah_positif_kum.value,
+        data: caseToday.jumlah_positif_kum.value,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
+        changes: changesCounter(
+          caseToday.jumlah_positif_kum.value,
+          caseYesterday.jumlah_positif_kum.value
+        ),
       },
       {
         iconBg: "red.100",
         iconColor: "red.500",
         icon: <RiVirusLine />,
         cardTitle: "KASUS POSITIF HARI INI",
-        data: today.jumlah_positif.value,
+        data: caseToday.jumlah_positif.value,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
+        changes: changesCounter(
+          caseToday.jumlah_positif.value,
+          caseYesterday.jumlah_positif.value
+        ),
       },
       {
         iconBg: "gray.100",
         iconColor: "gray.500",
         icon: <RiEmotionUnhappyFill />,
         cardTitle: "TOTAL KEMATIAN",
-        data: today.jumlah_meninggal_kum.value,
+        data: caseToday.jumlah_meninggal_kum.value,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
+        changes: changesCounter(
+          caseToday.jumlah_meninggal_kum.value,
+          caseYesterday.jumlah_meninggal_kum.value
+        ),
       },
       {
         iconBg: "gray.100",
         iconColor: "gray.500",
         icon: <RiEmotionUnhappyLine />,
         cardTitle: "KEMATIAN HARI INI",
-        data: today.jumlah_meninggal.value,
+        data: caseToday.jumlah_meninggal.value,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
+        changes: changesCounter(
+          caseToday.jumlah_meninggal.value,
+          caseYesterday.jumlah_meninggal.value
+        ),
       },
     ];
-    yesterdayArr = [
-      { data: yesterday.jumlah_positif_kum.value },
-      { data: yesterday.jumlah_positif.value },
-      { data: yesterday.jumlah_meninggal_kum.value },
-      { data: yesterday.jumlah_meninggal.value },
-    ];
+    // yesterdayArr = [
+    //   { data: caseYesterday.jumlah_positif_kum.value },
+    //   { data: caseYesterday.jumlah_positif.value },
+    //   { data: caseYesterday.jumlah_meninggal_kum.value },
+    //   { data: caseYesterday.jumlah_meninggal.value },
+    // ];
   }
 
   return (
@@ -142,10 +129,11 @@ export default function Vaccination({
                     <StatLabel fontSize="0.65em" color="gray.500">
                       {key.cardTitle}
                     </StatLabel>
-                    <StatNumber>{key.data.toLocaleString("en-US")}</StatNumber>
+                    <StatNumber>
+                      <CountUp separator=" " end={key.data} />
+                    </StatNumber>
                     <StatHelpText>
-                      {changesCounter(key.data, yesterdayArr[index].data) >
-                      0 ? (
+                      {key.changes > 0 ? (
                         <StatArrow
                           type="increase"
                           color={key.increaseArrowColor}
@@ -156,7 +144,13 @@ export default function Vaccination({
                           color={key.decreaseArrowColor}
                         />
                       )}
-                      {changesCounter(key.data, yesterdayArr[index].data)}%
+                      <CountUp
+                        separator=" "
+                        decimal="."
+                        decimals={2}
+                        end={key.changes}
+                      />
+                      %
                     </StatHelpText>
                   </Stat>
                 </Flex>

@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { RiSyringeFill } from "react-icons/ri";
 import { BiTargetLock } from "react-icons/bi";
+import CountUp from "react-countup";
 
 export default function Vaccination({ vaccData, ...props }) {
   let vaccArr = [];
@@ -100,9 +101,16 @@ export default function Vaccination({ vaccData, ...props }) {
                     <StatLabel fontSize="0.65em" color="gray.500">
                       {key.cardTitle}
                     </StatLabel>
-                    <StatNumber>{key.data.toLocaleString("en-US")}</StatNumber>
+                    <StatNumber>
+                      <CountUp separator=" " end={key.data} />
+                    </StatNumber>
                     <StatHelpText>
-                      {key.helperText}
+                      <CountUp
+                        separator=" "
+                        decimal="."
+                        decimals={2}
+                        end={key.helperText}
+                      />
                       {index !== 0 ? "%" : null}
                     </StatHelpText>
                   </Stat>
@@ -112,9 +120,6 @@ export default function Vaccination({ vaccData, ...props }) {
           })
         ) : (
           <>
-            <Box p={5} borderRadius={5} boxShadow="md" bg="white">
-              <SkeletonText noOfLines={3} spacing="4" />
-            </Box>
             <Box p={5} borderRadius={5} boxShadow="md" bg="white">
               <SkeletonText noOfLines={3} spacing="4" />
             </Box>

@@ -18,6 +18,7 @@ import {
   RiHeartFill,
   RiHeartLine,
 } from "react-icons/ri";
+import CountUp from "react-countup";
 
 export default function Mortality({
   caseToday,
@@ -25,81 +26,69 @@ export default function Mortality({
   changesCounter,
   ...props
 }) {
-  let today = {};
-  let yesterday = {};
   let todayArr = [];
   let yesterdayArr = [];
 
   if (caseToday && caseYesterday) {
-    for (let i = 0; i < 2; i++) {
-      if (i === 0) {
-        let {
-          jumlah_positif,
-          jumlah_positif_kum,
-          jumlah_meninggal,
-          jumlah_meninggal_kum,
-          key,
-          key_as_string,
-          ...data1
-        } = caseToday;
-        today = data1;
-      } else if (i === 1) {
-        let {
-          jumlah_positif,
-          jumlah_positif_kum,
-          jumlah_meninggal,
-          jumlah_meninggal_kum,
-          key,
-          key_as_string,
-          ...data2
-        } = caseYesterday;
-        yesterday = data2;
-      }
-    }
-
     todayArr = [
       {
         iconBg: "orange.100",
         iconColor: "orange.500",
         icon: <RiThermometerFill />,
         cardTitle: "TOTAL RAWATAN",
-        data: today.jumlah_dirawat_kum.value,
+        data: caseToday.jumlah_dirawat_kum.value,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
+        changes: changesCounter(
+          caseToday.jumlah_dirawat_kum.value,
+          caseYesterday.jumlah_dirawat_kum.value
+        ),
       },
       {
         iconBg: "orange.100",
         iconColor: "orange.500",
         icon: <RiThermometerLine />,
         cardTitle: "RAWATAN HARI INI",
-        data: today.jumlah_dirawat.value,
+        data: caseToday.jumlah_dirawat.value,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
+        changes: changesCounter(
+          caseToday.jumlah_dirawat.value,
+          caseYesterday.jumlah_dirawat.value
+        ),
       },
       {
         iconBg: "teal.100",
         iconColor: "teal.500",
         icon: <RiHeartFill />,
         cardTitle: "TOTAL KESEMBUHAN",
-        data: today.jumlah_sembuh_kum.value,
+        data: caseToday.jumlah_sembuh_kum.value,
         increaseArrowColor: "teal.500",
         decreaseArrowColor: "red.500",
+        changes: changesCounter(
+          caseToday.jumlah_sembuh_kum.value,
+          caseYesterday.jumlah_sembuh_kum.value
+        ),
       },
       {
         iconBg: "teal.100",
         iconColor: "teal.500",
         icon: <RiHeartLine />,
         cardTitle: "KESEMBUHAN HARI INI",
-        data: today.jumlah_sembuh.value,
+        data: caseToday.jumlah_sembuh.value,
         increaseArrowColor: "teal.500",
         decreaseArrowColor: "red.500",
+        changes: changesCounter(
+          caseToday.jumlah_sembuh.value,
+          caseYesterday.jumlah_sembuh.value
+        ),
       },
     ];
     yesterdayArr = [
-      { data: yesterday.jumlah_dirawat_kum.value },
-      { data: yesterday.jumlah_dirawat.value },
-      { data: yesterday.jumlah_sembuh_kum.value },
-      { data: yesterday.jumlah_sembuh.value },
+      { data: caseYesterday.jumlah_dirawat_kum.value },
+      { data: caseYesterday.jumlah_dirawat.value },
+      { data: caseYesterday.jumlah_sembuh_kum.value },
+      { data: caseYesterday.jumlah_sembuh.value },
     ];
   }
 
@@ -139,10 +128,11 @@ export default function Mortality({
                     <StatLabel fontSize="0.65em" color="gray.500">
                       {key.cardTitle}
                     </StatLabel>
-                    <StatNumber>{key.data}</StatNumber>
+                    <StatNumber>
+                      <CountUp separator=" " end={key.data} />
+                    </StatNumber>
                     <StatHelpText>
-                      {changesCounter(key.data, yesterdayArr[index].data) >
-                      0 ? (
+                      {key.changes > 0 ? (
                         <StatArrow
                           type="increase"
                           color={key.increaseArrowColor}
@@ -153,7 +143,13 @@ export default function Mortality({
                           color={key.decreaseArrowColor}
                         />
                       )}
-                      {changesCounter(key.data, yesterdayArr[index].data)} %
+                      <CountUp
+                        separator=" "
+                        decimal="."
+                        decimals={2}
+                        end={key.changes}
+                      />
+                      %
                     </StatHelpText>
                   </Stat>
                 </Flex>

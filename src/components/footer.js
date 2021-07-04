@@ -44,12 +44,14 @@ export default function Footer() {
           <ModalCloseButton />
           <ModalBody>
             <VStack align="left">
-              <Text color="gray.500">Kasus COVID-19: </Text>
-              <Link href="https://covid19.go.id" color="blue.500">
-                Pemerintah Indonesia (covid19.go.id)
+              <Text color="gray.500">
+                Kasus, kematian, rawatan, kesembuhan:
+              </Text>
+              <Link href="https://disease.sh/docs/#/" color="blue.500">
+                Disease.sh API dari pemerintah Indonesia
               </Link>
               <Divider />
-              <Text color="gray.500">Vaksinasi COVID-19: </Text>
+              <Text color="gray.500">Vaksinasi: </Text>
               <Link
                 href="https://vaksincovid19-api.vercel.app/api/"
                 color="blue.500"
@@ -74,7 +76,7 @@ export default function Footer() {
               onClick={onClose}
               variant="outline"
             >
-              Kembali
+              Tutup
             </Button>
           </ModalFooter>
         </ModalContent>

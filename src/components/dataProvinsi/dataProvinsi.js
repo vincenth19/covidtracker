@@ -1,5 +1,6 @@
 import { Heading, Box, Text } from "@chakra-ui/react";
 import { BsConeStriped } from "react-icons/bs";
+import {} from "react-table";
 export default function DataProvinsi() {
   return (
     <Box my={10} bg="gray.100" borderRadius={10} p={5} align="center">
