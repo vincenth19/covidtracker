@@ -37,7 +37,7 @@ export default function Footer() {
       <Modal
         isOpen={isOpen}
         onClose={onClose}
-        size="lg"
+        size="md"
         scrollBehavior="inside"
       >
         <ModalOverlay />
@@ -45,7 +45,7 @@ export default function Footer() {
           <ModalHeader>Sumber Data</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <VStack align="left" ml={4}>
+            <VStack align="left">
               <Text color="gray.500">Kasus COVID-19: </Text>
               <Link href="https://covid19.go.id" color="blue.500">
                 Pemerintah Indonesia (covid19.go.id)
@@ -64,7 +64,7 @@ export default function Footer() {
               <Divider />
               <Text color="gray.500">Data provinsi: </Text>
               <Link href="https://disease.sh/docs/#/" color="blue.500">
-                Disease.sh API dari
+                Disease.sh API dari pemerintah indonesia
               </Link>
             </VStack>
           </ModalBody>
