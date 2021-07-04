@@ -16,7 +16,7 @@ import { BiTargetLock } from "react-icons/bi";
 
 export default function Vaccination({ vaccData, ...props }) {
   let vaccArr = [];
-
+  let targetNasional = 181554465;
   if (vaccData) {
     let {
       sasaranvaksinsdmk,
@@ -24,6 +24,7 @@ export default function Vaccination({ vaccData, ...props }) {
       sasaranvaksinpetugaspublik,
       sembuh_kumulatif,
       lastUpdate,
+      totalsasaran,
       ...data
     } = vaccData;
 
@@ -34,8 +35,8 @@ export default function Vaccination({ vaccData, ...props }) {
         fontSize: "2rem",
         icon: <BiTargetLock />,
         marginx: "0",
-        cardTitle: "TOTAL TARGET FASE 1 & 2",
-        data: data.totalsasaran,
+        cardTitle: "TARGET VAKSINASI NASIONAL",
+        data: targetNasional,
         helperText: "-",
       },
       {
@@ -46,7 +47,7 @@ export default function Vaccination({ vaccData, ...props }) {
         marginx: "10px",
         cardTitle: "TOTAL VAKSINASI DOSIS 1",
         data: data.vaksinasi1,
-        helperText: ((data.vaksinasi1 / data.totalsasaran) * 100).toFixed(2),
+        helperText: ((data.vaksinasi1 / targetNasional) * 100).toFixed(2),
       },
       {
         iconBg: "purple.100",
@@ -56,7 +57,7 @@ export default function Vaccination({ vaccData, ...props }) {
         marginx: "10px",
         cardTitle: "TOTAL VAKSINASI DOSIS 2",
         data: data.vaksinasi2,
-        helperText: ((data.vaksinasi2 / data.totalsasaran) * 100).toFixed(2),
+        helperText: ((data.vaksinasi2 / targetNasional) * 100).toFixed(2),
       },
     ];
   }

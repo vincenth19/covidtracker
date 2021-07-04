@@ -23,7 +23,7 @@ import {
 import { RiExternalLinkLine, RiMenu3Fill } from "react-icons/ri";
 import { icons } from "./icons";
 import Home from "./components/home/home";
-import Navbar from "./components/Navbar";
+import Footer from "./components/footer";
 import DataProvinsi from "./components/dataProvinsi/dataProvinsi";
 
 function App() {
@@ -32,6 +32,7 @@ function App() {
   const [vaccination, setVaccination] = useState(0);
   const [error, setError] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [asd, setasd] = useState();
   const handleToggle = () => (isOpen ? onClose() : onOpen());
 
   function setData1(data) {
@@ -61,18 +62,36 @@ function App() {
         console.error("There was an error!", error);
       });
   }
-
+  async function a() {
+    fetch("https://api.covidtracking.com/v2/us/daily/2021-01-02.json")
+      .then((response) => {
+        console.log("here");
+        response.json();
+        console.log(response);
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        setError(error.toString());
+        console.error("There was an error!", error);
+      });
+  }
   useEffect(() => {
     apiGet(
       "https://apicovid19indonesia-v2.vercel.app/api/indonesia/harian",
       setData1
     );
     apiGet("https://vaksincovid19-api.vercel.app/api/vaksin", setVaccination);
+    a();
   }, []);
 
   const ACTIVE_LINK = {
     fontWeight: "700",
-    color: "#EB5569",
+    color: "#FFFFFF",
+    backgroundColor: "#EB5569",
+    padding: "0px 10px",
+    borderRadius: "5px",
   };
 
   return (
@@ -119,7 +138,7 @@ function App() {
                 spacing={5}
               >
                 <NavLink activeStyle={ACTIVE_LINK} to="/home">
-                  Home
+                  Beranda
                 </NavLink>
                 <NavLink activeStyle={ACTIVE_LINK} to="/data-provinsi">
                   Data Provinsi
@@ -142,6 +161,7 @@ function App() {
               </Stack>
             </Flex>
             {/* router */}
+
             <Switch>
               <Route path="/data-provinsi" component={DataProvinsi} />
               <Route path="/home">
@@ -156,6 +176,8 @@ function App() {
                 <Redirect to="/home" />
               </Route>
             </Switch>
+
+            <Footer />
           </Container>
         </Box>
       </BrowserRouter>
