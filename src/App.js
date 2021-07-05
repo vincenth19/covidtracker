@@ -9,9 +9,9 @@ import {
   Spacer,
   useDisclosure,
   Button,
-  Heading,
   Spinner,
   Link,
+  Image,
 } from "@chakra-ui/react";
 import {
   BrowserRouter,
@@ -20,13 +20,14 @@ import {
   NavLink,
   Redirect,
 } from "react-router-dom";
-import { RiExternalLinkLine, RiMenu3Fill } from "react-icons/ri";
-import { icons } from "./icons";
+import { RiMenu3Fill } from "react-icons/ri";
+import Virus from "./virus.png";
 import Home from "./components/home/home";
 import Footer from "./components/footer";
 import DataProvinsi from "./components/dataProvinsi/dataProvinsi";
 
 function App() {
+  const [caseData, setCaseData] = useState();
   const [caseToday, setCaseToday] = useState();
   const [caseYesterday, setCaseYesterday] = useState();
   const [vaccination, setVaccination] = useState();
@@ -35,6 +36,7 @@ function App() {
   const handleToggle = () => (isOpen ? onClose() : onOpen());
 
   function setData1(data) {
+    setCaseData(data);
     let top = data.update.update.harian.pop();
     setCaseToday(top);
     let dayMin1 = data.update.update.harian.pop();
@@ -87,18 +89,24 @@ function App() {
               wrap="wrap"
               padding={6}
             >
-              <Flex wrap="wrap" justifyContent="center" align="center">
-                {icons[0]}
-                <Stack ml={3}>
-                  <Heading as="h1" size="lg">
+              <Flex wrap="wrap" align="center">
+                <Image src={Virus} boxSize="50px" />
+                <Stack spacing={0} ml={3}>
+                  <Text fontSize={["lg", "xl", "2xl", "3xl"]}>
                     <strong>CovidTracker</strong>
-                  </Heading>
-                  <Text>By Vincent Haryadi</Text>
+                  </Text>
+                  <UpdateTime
+                    textAlign="left"
+                    display={["none", "flex"]}
+                    date={
+                      caseToday && new Date(caseToday.key).toLocaleDateString()
+                    }
+                  />
                 </Stack>
               </Flex>
               <Spacer />
               <Button
-                display={{ base: "block", md: "none" }}
+                display={["block", "block", "block", "none"]}
                 color="grey.500"
                 onClick={handleToggle}
               >
@@ -107,36 +115,58 @@ function App() {
 
               <Stack
                 direction={{ base: "column", md: "row" }}
-                display={{ base: isOpen ? "flex" : "none", md: "flex" }}
-                width={{ base: "full", md: "auto" }}
-                alignItems="center"
+                display={{
+                  base: isOpen ? "flex" : "none",
+                  md: "none",
+                  lg: "flex",
+                }}
+                width={["full", "full", "full", "auto"]}
+                textAlign={"right"}
+                alignItems={["flex-end", "flex-end", "flex-end", "center"]}
                 justifyContent="flex-end"
                 flexGrow={1}
                 mt={{ base: 4, md: 0 }}
-                spacing={5}
+                spacing={3}
               >
-                <NavLink activeStyle={ACTIVE_LINK} to="/home">
+                <Link as={NavLink} activeStyle={ACTIVE_LINK} to="/home">
                   Beranda
-                </NavLink>
-                <NavLink activeStyle={ACTIVE_LINK} to="/data-provinsi">
+                </Link>
+                <Link
+                  as={NavLink}
+                  activeStyle={ACTIVE_LINK}
+                  to="/data-provinsi"
+                >
                   Data Provinsi
-                </NavLink>
-                {/* <Link>RS Rujukan</Link> */}
+                </Link>
+                <Link
+                  href="http://yankes.kemkes.go.id/app/siranap/"
+                  target="_blank"
+                >
+                  Cari RS COVID
+                </Link>
                 <a
                   href="https://linkedin.com/in/vincenth19"
                   target="_blank"
-                  rel="noopener"
+                  rel="noreferrer"
                 >
-                  <Link align="center">
-                    <Link href="https://vincenth19.com" target="_blank">
-                      About Me
-                    </Link>
-                  </Link>
+                  <Button
+                    as={Link}
+                    size="sm"
+                    colorScheme="red"
+                    variant="outline"
+                    href="https://vincenth19.com"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    About Me
+                  </Button>
                 </a>
                 <UpdateTime
+                  textAlign="right"
                   date={
                     caseToday && new Date(caseToday.key).toLocaleDateString()
                   }
+                  display={["flex", "none"]}
                 />
               </Stack>
             </Flex>
@@ -144,7 +174,7 @@ function App() {
 
             <Switch>
               <Route path="/data-provinsi">
-                <DataProvinsi data={caseToday} />
+                <DataProvinsi data={caseData} />
               </Route>
               <Route path="/home">
                 <Home
@@ -170,9 +200,13 @@ function App() {
 
 function UpdateTime({ date, ...props }) {
   return (
-    <Flex {...props} color="gray.500">
-      <Text>Last Data Update: </Text>
-      <Text ml={2}>{date !== 0 ? <strong>{date}</strong> : <Spinner />}</Text>
+    <Flex wrap="wrap" alignItems="center" {...props} fontSize="0.8rem">
+      <Text color="gray.500" fontWeight="semibold" f>
+        TERAKHIR DIPERBARUI:{" "}
+      </Text>
+      <Text color="gray.600" ml={1}>
+        {date !== 0 ? <strong>{date}</strong> : <Spinner />}
+      </Text>
     </Flex>
   );
 }

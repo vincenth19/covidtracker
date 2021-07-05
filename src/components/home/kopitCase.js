@@ -28,7 +28,6 @@ export default function Vaccination({
   ...props
 }) {
   let todayArr = [];
-  let yesterdayArr = [];
   //rearranging and adding data key value for easy looping
   if (caseToday && caseYesterday) {
     todayArr = [
@@ -148,9 +147,9 @@ export default function Vaccination({
                         separator=" "
                         decimal="."
                         decimals={2}
+                        suffix="%"
                         end={key.changes}
                       />
-                      %
                     </StatHelpText>
                   </Stat>
                 </Flex>

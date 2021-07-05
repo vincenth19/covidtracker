@@ -27,7 +27,6 @@ export default function Mortality({
   ...props
 }) {
   let todayArr = [];
-  let yesterdayArr = [];
 
   if (caseToday && caseYesterday) {
     todayArr = [
@@ -83,12 +82,6 @@ export default function Mortality({
           caseYesterday.jumlah_sembuh.value
         ),
       },
-    ];
-    yesterdayArr = [
-      { data: caseYesterday.jumlah_dirawat_kum.value },
-      { data: caseYesterday.jumlah_dirawat.value },
-      { data: caseYesterday.jumlah_sembuh_kum.value },
-      { data: caseYesterday.jumlah_sembuh.value },
     ];
   }
 
@@ -147,9 +140,9 @@ export default function Mortality({
                         separator=" "
                         decimal="."
                         decimals={2}
+                        suffix="%"
                         end={key.changes}
                       />
-                      %
                     </StatHelpText>
                   </Stat>
                 </Flex>

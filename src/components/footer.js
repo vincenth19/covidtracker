@@ -23,20 +23,32 @@ export default function Footer() {
         mt={5}
         py={5}
         width="full"
-        justify="center"
         borderTopColor="gray.200"
         borderTopWidth="1px"
         justify="space-between"
+        fontSize={["sm", "md"]}
       >
-        <Text color="gray.500">
-          Designed & created by{" "}
-          <Link href="https://vincenth19.com">
+        <Flex wrap="wrap" color="gray.500">
+          <Text>Designed & created by </Text>
+          <Link
+            target="_blank"
+            rel="noreferrer"
+            ml={[0, 1]}
+            href="https://vincenth19.com"
+          >
             <strong>Vincent Haryadi</strong>
           </Link>
-        </Text>
-        <Button onClick={onOpen} colorScheme="red" variant="link">
-          Sumber Data
-        </Button>
+        </Flex>
+        <Flex>
+          <Button
+            onClick={onOpen}
+            colorScheme="red"
+            variant="link"
+            fontSize={["sm", "md"]}
+          >
+            Sumber Data
+          </Button>
+        </Flex>
       </Flex>
       <Modal
         isOpen={isOpen}
