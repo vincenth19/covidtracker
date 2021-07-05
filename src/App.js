@@ -27,9 +27,9 @@ import Footer from "./components/footer";
 import DataProvinsi from "./components/dataProvinsi/dataProvinsi";
 
 function App() {
-  const [caseToday, setCaseToday] = useState({});
-  const [caseYesterday, setCaseYesterday] = useState({});
-  const [vaccination, setVaccination] = useState({});
+  const [caseToday, setCaseToday] = useState();
+  const [caseYesterday, setCaseYesterday] = useState();
+  const [vaccination, setVaccination] = useState();
   const [error, setError] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleToggle = () => (isOpen ? onClose() : onOpen());
@@ -109,7 +109,7 @@ function App() {
                 direction={{ base: "column", md: "row" }}
                 display={{ base: isOpen ? "flex" : "none", md: "flex" }}
                 width={{ base: "full", md: "auto" }}
-                alignItems="right"
+                alignItems="center"
                 justifyContent="flex-end"
                 flexGrow={1}
                 mt={{ base: 4, md: 0 }}
@@ -131,7 +131,6 @@ function App() {
                     <Link href="https://vincenth19.com" target="_blank">
                       About Me
                     </Link>
-                    <RiExternalLinkLine />
                   </Link>
                 </a>
                 <UpdateTime
