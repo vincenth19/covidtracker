@@ -11,6 +11,7 @@ import {
   Button,
   Heading,
   Spinner,
+  Link,
 } from "@chakra-ui/react";
 import {
   BrowserRouter,
@@ -26,9 +27,9 @@ import Footer from "./components/footer";
 import DataProvinsi from "./components/dataProvinsi/dataProvinsi";
 
 function App() {
-  const [caseToday, setCaseToday] = useState(0);
-  const [caseYesterday, setCaseYesterday] = useState(0);
-  const [vaccination, setVaccination] = useState(0);
+  const [caseToday, setCaseToday] = useState({});
+  const [caseYesterday, setCaseYesterday] = useState({});
+  const [vaccination, setVaccination] = useState({});
   const [error, setError] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleToggle = () => (isOpen ? onClose() : onOpen());
@@ -126,9 +127,12 @@ function App() {
                   target="_blank"
                   rel="noopener"
                 >
-                  <Flex align="center">
-                    About Me <RiExternalLinkLine ml={7} />
-                  </Flex>
+                  <Link align="center">
+                    <Link href="https://vincenth19.com" target="_blank">
+                      About Me
+                    </Link>
+                    <RiExternalLinkLine />
+                  </Link>
                 </a>
                 <UpdateTime
                   date={
@@ -141,7 +145,7 @@ function App() {
 
             <Switch>
               <Route path="/data-provinsi">
-                <DataProvinsi />
+                <DataProvinsi data={caseToday} />
               </Route>
               <Route path="/home">
                 <Home

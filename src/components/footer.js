@@ -1,7 +1,6 @@
 import {
   Text,
   useDisclosure,
-  HStack,
   Button,
   Modal,
   ModalOverlay,
@@ -13,25 +12,32 @@ import {
   VStack,
   Link,
   Divider,
+  Flex,
 } from "@chakra-ui/react";
 
 export default function Footer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <HStack
+      <Flex
         mt={5}
-        p={5}
+        py={5}
         width="full"
         justify="center"
         borderTopColor="gray.200"
         borderTopWidth="1px"
+        justify="space-between"
       >
-        <Text color="gray.500">By Vincent Haryadi</Text>
+        <Text color="gray.500">
+          Designed & created by{" "}
+          <Link href="https://vincenth19.com">
+            <strong>Vincent Haryadi</strong>
+          </Link>
+        </Text>
         <Button onClick={onOpen} colorScheme="red" variant="link">
           Sumber Data
         </Button>
-      </HStack>
+      </Flex>
       <Modal
         isOpen={isOpen}
         onClose={onClose}
