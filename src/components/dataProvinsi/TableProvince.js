@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Text, Box, Heading, Spinner, Flex } from "@chakra-ui/react";
-import DataTable from "mui-datatables";
+import DataTable, { debounceSearchRender } from "mui-datatables";
 import CountUp from "react-countup";
 import { MdReportProblem } from "react-icons/md";
 import Loading from "../loading";
@@ -12,6 +12,7 @@ export default function TableProvince({ ...props }) {
     selectableRows: "none",
     rowsPerPageOptions: [10, 20, 34],
     responsive: "simple",
+    customSearchRender: debounceSearchRender(500),
   };
   const cols = [
     {

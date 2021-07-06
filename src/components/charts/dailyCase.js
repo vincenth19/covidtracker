@@ -25,10 +25,10 @@ export default function DailyCase({ ...props }) {
 
   useEffect(() => {
     setChartData(JSON.parse(sessionStorage.getItem("data_chart")));
-  }, []);
+  }, [chartData]);
 
   return (
-    <Box mt={6}>
+    <Box mt={6} {...props}>
       <Text mb={3} fontSize="xl" fontWeight="bold">
         Grafik Gabungan{" "}
         {quantity === "harian"
@@ -36,7 +36,11 @@ export default function DailyCase({ ...props }) {
           : "Perkembangan Kasus Secara Kumulatif"}
       </Text>
       <RadioQuantity setQuatity={setQuatity} />
-      <Chart chartData={chartData} quantity={quantity} />
+      {sessionStorage["data_chart"] ? (
+        <Chart data={chartData} quantity={quantity} />
+      ) : (
+        <Loading minH="10vh" mt={5} />
+      )}
     </Box>
   );
 }
@@ -97,60 +101,56 @@ function CustomRadio(props) {
   );
 }
 
-function Chart({ chartData, quantity }) {
+function Chart({ data, quantity }) {
   return (
     <>
-      {chartData ? (
-        <Flex justifyContent="center" mt={5}>
-          <LineChart
-            width={window.innerWidth > 1000 ? 1000 : window.innerWidth - 20}
-            height={500}
-            data={chartData}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="tanggal" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey={quantity === "harian" ? "positif" : "positif_kumulatif"}
-              stroke="#E53E3E"
-              //activeDot={{ r: 8 }}
-              dot={false}
-            />
-            <Line
-              type="monotone"
-              dataKey={quantity === "harian" ? "dirawat" : "dirawat_kumulatif"}
-              stroke="#ED8936"
-              dot={false}
-            />
-            <Line
-              type="monotone"
-              dataKey={quantity === "harian" ? "sembuh" : "sembuh_kumulatif"}
-              stroke="#82ca9d"
-              dot={false}
-            />
-            <Line
-              type="monotone"
-              dataKey={
-                quantity === "harian" ? "meninggal" : "meninggal_kumulatif"
-              }
-              stroke="#000"
-              dot={false}
-            />
-            <Brush travellerWidth={50} />
-          </LineChart>
-        </Flex>
-      ) : (
-        <Loading minH="10vh" mt={5} />
-      )}
+      <Flex justifyContent="center" mt={5}>
+        <LineChart
+          width={window.innerWidth > 1000 ? 1000 : window.innerWidth - 20}
+          height={500}
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="tanggal" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey={quantity === "harian" ? "positif" : "positif_kumulatif"}
+            stroke="#E53E3E"
+            //activeDot={{ r: 8 }}
+            dot={false}
+          />
+          <Line
+            type="monotone"
+            dataKey={quantity === "harian" ? "dirawat" : "dirawat_kumulatif"}
+            stroke="#ED8936"
+            dot={false}
+          />
+          <Line
+            type="monotone"
+            dataKey={quantity === "harian" ? "sembuh" : "sembuh_kumulatif"}
+            stroke="#82ca9d"
+            dot={false}
+          />
+          <Line
+            type="monotone"
+            dataKey={
+              quantity === "harian" ? "meninggal" : "meninggal_kumulatif"
+            }
+            stroke="#000"
+            dot={false}
+          />
+          <Brush travellerWidth={50} />
+        </LineChart>
+      </Flex>
     </>
   );
 }
