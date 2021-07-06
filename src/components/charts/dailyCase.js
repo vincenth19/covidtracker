@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import {
   Box,
   Flex,
@@ -145,7 +145,7 @@ function Chart({ chartData, quantity }) {
               stroke="#000"
               dot={false}
             />
-            <Brush />
+            <Brush travellerWidth={50} />
           </LineChart>
         </Flex>
       ) : (
