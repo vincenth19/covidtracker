@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { Text, Box } from "@chakra-ui/react";
+import { Text, Box, Heading, Spinner, Flex } from "@chakra-ui/react";
 import DataTable from "mui-datatables";
 import CountUp from "react-countup";
+import { MdReportProblem } from "react-icons/md";
 
-export default function TableProvince({ tableData, ...props }) {
+export default function TableProvince({ ...props }) {
   const [localCaseData, setLocalCaseData] = useState();
+  const [apiError, setApiError] = useState();
   const options = {
     selectableRows: "none",
     rowsPerPageOptions: [10, 20, 34],
@@ -12,7 +14,7 @@ export default function TableProvince({ tableData, ...props }) {
   };
   const cols = [
     {
-      name: "key",
+      name: "provinsi",
       label: "Provinsi",
       options: {
         filter: true,
@@ -34,54 +36,15 @@ export default function TableProvince({ tableData, ...props }) {
       },
     },
     {
-      name: "doc_count",
-      label: "% Dari Semua Kasus",
+      name: "kasus",
+      label: "Kasus",
       options: {
         filter: true,
         sort: true,
         filterType: "textField",
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
-            let val = localCaseData[dataIndex].doc_count.toFixed(2);
-            let x = (
-              <Text>
-                <CountUp
-                  separator=" "
-                  decimal="."
-                  decimals={2}
-                  end={val}
-                  suffix="%"
-                />
-              </Text>
-            );
-            return x;
-          }
-        },
-        customHeadLabelRender: (columnMeta) => {
-          let colHead = (
-            <Text
-              color="gray.500"
-              fontWeight="semibold"
-              fontSize="0.8rem"
-              textAlign="left"
-            >
-              {columnMeta.label.toUpperCase()}
-            </Text>
-          );
-          return colHead;
-        },
-      },
-    },
-    {
-      name: "jumlah_kasus",
-      label: "Jumlah Kasus",
-      options: {
-        filter: true,
-        sort: true,
-        filterType: "textField",
-        customBodyRenderLite: (dataIndex) => {
-          if (dataIndex <= 33) {
-            let val = localCaseData[dataIndex].jumlah_kasus;
+            let val = localCaseData[dataIndex].kasus;
             let x = (
               <Text>
                 <CountUp separator=" " end={val} />
@@ -106,15 +69,15 @@ export default function TableProvince({ tableData, ...props }) {
       },
     },
     {
-      name: "jumlah_sembuh",
-      label: "Jumlah Sembuh",
+      name: "dirawat",
+      label: "Dirawat",
       options: {
         filter: true,
         sort: true,
         filterType: "textField",
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
-            let val = localCaseData[dataIndex].jumlah_kasus;
+            let val = localCaseData[dataIndex].kasus;
             let x = (
               <Text>
                 <CountUp separator=" " end={val} />
@@ -139,15 +102,15 @@ export default function TableProvince({ tableData, ...props }) {
       },
     },
     {
-      name: "jumlah_meninggal",
-      label: "Jumlah Meninggal",
+      name: "sembuh",
+      label: "Sembuh",
       options: {
         filter: true,
         sort: true,
         filterType: "textField",
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
-            let val = localCaseData[dataIndex].jumlah_kasus;
+            let val = localCaseData[dataIndex].kasus;
             let x = (
               <Text>
                 <CountUp separator=" " end={val} />
@@ -172,15 +135,15 @@ export default function TableProvince({ tableData, ...props }) {
       },
     },
     {
-      name: "jumlah_dirawat",
-      label: "Jumlah Dirawat",
+      name: "meninggal",
+      label: "Meninggal",
       options: {
         filter: true,
         sort: true,
         filterType: "textField",
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
-            let val = localCaseData[dataIndex].jumlah_kasus;
+            let val = localCaseData[dataIndex].kasus;
             let x = (
               <Text>
                 <CountUp separator=" " end={val} />
@@ -205,37 +168,67 @@ export default function TableProvince({ tableData, ...props }) {
       },
     },
   ];
+
+  async function getDataTable() {
+    await fetch(
+      "https://apicovid19indonesia-v2.vercel.app/api/indonesia/provinsi"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setLocalCaseData(data);
+        sessionStorage.setItem("data_provinsi", JSON.stringify(data));
+        //console.log("api", data);
+      })
+      .catch((error) => {
+        setApiError(error.toString());
+        //console.error("There was an in the API: ", error);
+      });
+  }
+
   useEffect(() => {
     //console.log("render");
-    if (tableData) {
-      tableData.prov.list_data.pop();
-      tableData.prov.list_data.pop();
-      setLocalCaseData(tableData.prov.list_data);
-      //console.log("fff");
+    if (sessionStorage["data_provinsi"]) {
+      setLocalCaseData(JSON.parse(sessionStorage.getItem("data_provinsi")));
+      //console.log("fff", JSON.parse(sessionStorage.getItem("data_provinsi")));
     } else {
-      fetch("https://disease.sh/v3/covid-19/gov/ID")
-        .then((response) => response.json())
-        .then((data) => {
-          data.prov.list_data.pop();
-          data.prov.list_data.pop();
-          setLocalCaseData(data.prov.list_data);
-          //console.log("api");
-        })
-        .catch((error) => {
-          //setError(error.toString());
-          console.error("There was an error!", error);
-        });
+      getDataTable();
     }
-  }, [tableData]);
+  }, []);
+
+  function isDataReady() {
+    if (sessionStorage["data_provinsi"]) {
+      return (
+        <DataTable
+          title={"Data Provinsi"}
+          data={localCaseData}
+          columns={cols}
+          options={options}
+        />
+      );
+    } else {
+      return (
+        <Flex justifyContent="center" alignItems="center" minH="70vh">
+          <Spinner color="red.500" size="xl" />
+        </Flex>
+      );
+    }
+  }
 
   return (
     <Box {...props}>
-      <DataTable
-        title={"Data Provinsi"}
-        data={localCaseData}
-        columns={cols}
-        options={options}
-      />
+      {apiError ? (
+        <Box my={10} bg="gray.100" borderRadius={10} p={5} align="center">
+          <Text color="yellow.500" fontSize="6xl" my={3}>
+            <MdReportProblem />
+          </Text>
+          <Heading fontSize="lg">
+            Ada masalah di API untuk mengambil data provinsi.
+          </Heading>
+          <Text>Error: {apiError}</Text>
+        </Box>
+      ) : (
+        isDataReady()
+      )}
     </Box>
   );
 }

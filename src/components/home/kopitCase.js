@@ -5,7 +5,6 @@ import {
   Text,
   Stat,
   StatLabel,
-  StatHelpText,
   StatNumber,
   StatArrow,
   SimpleGrid,
@@ -13,11 +12,9 @@ import {
 } from "@chakra-ui/react";
 
 import {
-  RiVirusLine,
   RiVirusFill,
   RiSurgicalMaskFill,
   RiEmotionUnhappyFill,
-  RiEmotionUnhappyLine,
 } from "react-icons/ri";
 import CountUp from "react-countup";
 
@@ -36,60 +33,34 @@ export default function Vaccination({
         iconColor: "red.500",
         icon: <RiVirusFill />,
         cardTitle: "TOTAL KASUS POSITIF",
-        data: caseToday.jumlah_positif_kum.value,
+        data: caseToday.positif_kumulatif,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
-        changes: changesCounter(
-          caseToday.jumlah_positif_kum.value,
-          caseYesterday.jumlah_positif_kum.value
-        ),
-      },
-      {
-        iconBg: "red.100",
-        iconColor: "red.500",
-        icon: <RiVirusLine />,
-        cardTitle: "KASUS POSITIF HARI INI",
-        data: caseToday.jumlah_positif.value,
-        increaseArrowColor: "red.500",
-        decreaseArrowColor: "teal.500",
-        changes: changesCounter(
-          caseToday.jumlah_positif.value,
-          caseYesterday.jumlah_positif.value
-        ),
+        changes: {
+          totalYtd: caseToday.positif,
+          percentage: changesCounter(
+            caseToday.positif_kumulatif,
+            caseYesterday.positif_kumulatif
+          ),
+        },
       },
       {
         iconBg: "gray.100",
         iconColor: "gray.500",
         icon: <RiEmotionUnhappyFill />,
         cardTitle: "TOTAL KEMATIAN",
-        data: caseToday.jumlah_meninggal_kum.value,
+        data: caseToday.meninggal_kumulatif,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
-        changes: changesCounter(
-          caseToday.jumlah_meninggal_kum.value,
-          caseYesterday.jumlah_meninggal_kum.value
-        ),
-      },
-      {
-        iconBg: "gray.100",
-        iconColor: "gray.500",
-        icon: <RiEmotionUnhappyLine />,
-        cardTitle: "KEMATIAN HARI INI",
-        data: caseToday.jumlah_meninggal.value,
-        increaseArrowColor: "red.500",
-        decreaseArrowColor: "teal.500",
-        changes: changesCounter(
-          caseToday.jumlah_meninggal.value,
-          caseYesterday.jumlah_meninggal.value
-        ),
+        changes: {
+          totalYtd: caseToday.meninggal,
+          percentage: changesCounter(
+            caseToday.meninggal_kumulatif,
+            caseYesterday.meninggal_kumulatif
+          ),
+        },
       },
     ];
-    // yesterdayArr = [
-    //   { data: caseYesterday.jumlah_positif_kum.value },
-    //   { data: caseYesterday.jumlah_positif.value },
-    //   { data: caseYesterday.jumlah_meninggal_kum.value },
-    //   { data: caseYesterday.jumlah_meninggal.value },
-    // ];
   }
 
   return (
@@ -103,10 +74,7 @@ export default function Vaccination({
         </Text>
       </HStack>
       {/* {{lg: "23.5%", md: "47%", sm: "47%", base: "94%"}} */}
-      <SimpleGrid
-        minChildWidth={{ lg: "23.5%", md: "47%", sm: "47%", base: "94%" }}
-        spacing="2%"
-      >
+      <SimpleGrid minChildWidth={["94%", "47%", "47%", "23.5%"]} spacing="2%">
         {caseToday ? (
           todayArr.map((key, index) => {
             return (
@@ -131,8 +99,8 @@ export default function Vaccination({
                     <StatNumber>
                       <CountUp separator=" " end={key.data} />
                     </StatNumber>
-                    <StatHelpText>
-                      {key.changes > 0 ? (
+                    <Flex alignItems="center" fontSize="0.8rem">
+                      {key.changes.percentage > 0 ? (
                         <StatArrow
                           type="increase"
                           color={key.increaseArrowColor}
@@ -143,14 +111,23 @@ export default function Vaccination({
                           color={key.decreaseArrowColor}
                         />
                       )}
-                      <CountUp
-                        separator=" "
-                        decimal="."
-                        decimals={2}
-                        suffix="%"
-                        end={key.changes}
-                      />
-                    </StatHelpText>
+                      <Flex color="gray.600">
+                        <Text>
+                          <CountUp separator="." end={key.changes.totalYtd} />
+                        </Text>
+                        <Text ml={1}>
+                          {"("}
+                          <CountUp
+                            separator="."
+                            decimal=","
+                            decimals={2}
+                            suffix="%"
+                            end={key.changes.percentage}
+                          />
+                          {")"}
+                        </Text>
+                      </Flex>
+                    </Flex>
                   </Stat>
                 </Flex>
               </Box>
@@ -158,12 +135,6 @@ export default function Vaccination({
           })
         ) : (
           <>
-            <Box p={5} borderRadius={5} boxShadow="md" bg="white">
-              <SkeletonText noOfLines={3} spacing="4" />
-            </Box>
-            <Box p={5} borderRadius={5} boxShadow="md" bg="white">
-              <SkeletonText noOfLines={3} spacing="4" />
-            </Box>
             <Box p={5} borderRadius={5} boxShadow="md" bg="white">
               <SkeletonText noOfLines={3} spacing="4" />
             </Box>

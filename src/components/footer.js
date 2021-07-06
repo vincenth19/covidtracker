@@ -20,7 +20,7 @@ export default function Footer() {
   return (
     <>
       <Flex
-        mt={5}
+        mt={8}
         py={5}
         width="full"
         borderTopColor="gray.200"
@@ -65,8 +65,11 @@ export default function Footer() {
               <Text color="gray.500">
                 Kasus, kematian, rawatan, kesembuhan:
               </Text>
-              <Link href="https://disease.sh/docs/#/" color="blue.500">
-                Disease.sh API dari pemerintah Indonesia
+              <Link
+                href="https://github.com/Reynadi531/api-covid19-indonesia-v2"
+                color="blue.500"
+              >
+                API dari Reynadi, sumber dari pemerintah Indonesia
               </Link>
               <Divider />
               <Text color="gray.500">Vaksinasi: </Text>
@@ -76,13 +79,13 @@ export default function Footer() {
               >
                 Web Scraping API dari website Kemenkes oleh Reynadi
               </Link>
-              <Link href="https://disease.sh/docs/#/" color="blue.500">
-                Disease.sh API dari ourworldindata.org
-              </Link>
               <Divider />
               <Text color="gray.500">Data provinsi: </Text>
-              <Link href="https://disease.sh/docs/#/" color="blue.500">
-                Disease.sh API dari pemerintah indonesia
+              <Link
+                href="https://github.com/Reynadi531/api-covid19-indonesia-v2"
+                color="blue.500"
+              >
+                API dari Reynadi, sumber dari pemerintah Indonesia
               </Link>
             </VStack>
           </ModalBody>

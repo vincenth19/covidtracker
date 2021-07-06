@@ -6,18 +6,12 @@ import {
   SkeletonText,
   Stat,
   StatLabel,
-  StatHelpText,
   StatNumber,
   StatArrow,
   SimpleGrid,
 } from "@chakra-ui/react";
 import { MdLocalHospital } from "react-icons/md";
-import {
-  RiThermometerFill,
-  RiThermometerLine,
-  RiHeartFill,
-  RiHeartLine,
-} from "react-icons/ri";
+import { RiThermometerFill, RiHeartFill } from "react-icons/ri";
 import CountUp from "react-countup";
 
 export default function Mortality({
@@ -35,52 +29,32 @@ export default function Mortality({
         iconColor: "orange.500",
         icon: <RiThermometerFill />,
         cardTitle: "TOTAL RAWATAN",
-        data: caseToday.jumlah_dirawat_kum.value,
+        data: caseToday.dirawat_kumulatif,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
-        changes: changesCounter(
-          caseToday.jumlah_dirawat_kum.value,
-          caseYesterday.jumlah_dirawat_kum.value
-        ),
-      },
-      {
-        iconBg: "orange.100",
-        iconColor: "orange.500",
-        icon: <RiThermometerLine />,
-        cardTitle: "RAWATAN HARI INI",
-        data: caseToday.jumlah_dirawat.value,
-        increaseArrowColor: "red.500",
-        decreaseArrowColor: "teal.500",
-        changes: changesCounter(
-          caseToday.jumlah_dirawat.value,
-          caseYesterday.jumlah_dirawat.value
-        ),
+        changes: {
+          totalYtd: caseToday.dirawat,
+          percentage: changesCounter(
+            caseToday.dirawat_kumulatif,
+            caseYesterday.dirawat_kumulatif
+          ),
+        },
       },
       {
         iconBg: "teal.100",
         iconColor: "teal.500",
         icon: <RiHeartFill />,
         cardTitle: "TOTAL KESEMBUHAN",
-        data: caseToday.jumlah_sembuh_kum.value,
+        data: caseToday.sembuh_kumulatif,
         increaseArrowColor: "teal.500",
         decreaseArrowColor: "red.500",
-        changes: changesCounter(
-          caseToday.jumlah_sembuh_kum.value,
-          caseYesterday.jumlah_sembuh_kum.value
-        ),
-      },
-      {
-        iconBg: "teal.100",
-        iconColor: "teal.500",
-        icon: <RiHeartLine />,
-        cardTitle: "KESEMBUHAN HARI INI",
-        data: caseToday.jumlah_sembuh.value,
-        increaseArrowColor: "teal.500",
-        decreaseArrowColor: "red.500",
-        changes: changesCounter(
-          caseToday.jumlah_sembuh.value,
-          caseYesterday.jumlah_sembuh.value
-        ),
+        changes: {
+          totalYtd: caseToday.sembuh,
+          percentage: changesCounter(
+            caseToday.sembuh_kumulatif,
+            caseYesterday.sembuh_kumulatif
+          ),
+        },
       },
     ];
   }
@@ -96,10 +70,7 @@ export default function Mortality({
         </Text>
       </HStack>
 
-      <SimpleGrid
-        minChildWidth={{ lg: "23.5%", md: "47%", sm: "47%", base: "94%" }}
-        spacing="2%"
-      >
+      <SimpleGrid minChildWidth={["94%", "47%", "47%", "23.5%"]} spacing="2%">
         {caseToday ? (
           todayArr.map((key, index) => {
             return (
@@ -122,10 +93,10 @@ export default function Mortality({
                       {key.cardTitle}
                     </StatLabel>
                     <StatNumber>
-                      <CountUp separator=" " end={key.data} />
+                      <CountUp separator="." end={key.data} />
                     </StatNumber>
-                    <StatHelpText>
-                      {key.changes > 0 ? (
+                    <Flex alignItems="center" fontSize="0.8rem">
+                      {key.changes.percentage > 0 ? (
                         <StatArrow
                           type="increase"
                           color={key.increaseArrowColor}
@@ -136,14 +107,23 @@ export default function Mortality({
                           color={key.decreaseArrowColor}
                         />
                       )}
-                      <CountUp
-                        separator=" "
-                        decimal="."
-                        decimals={2}
-                        suffix="%"
-                        end={key.changes}
-                      />
-                    </StatHelpText>
+                      <Flex color="gray.600">
+                        <Text>
+                          <CountUp separator="." end={key.changes.totalYtd} />
+                        </Text>
+                        <Text ml={1}>
+                          {"("}
+                          <CountUp
+                            separator="."
+                            decimal=","
+                            decimals={2}
+                            suffix="%"
+                            end={key.changes.percentage}
+                          />
+                          {")"}
+                        </Text>
+                      </Flex>
+                    </Flex>
                   </Stat>
                 </Flex>
               </Box>
@@ -151,12 +131,6 @@ export default function Mortality({
           })
         ) : (
           <>
-            <Box p={5} borderRadius={5} boxShadow="md" bg="white">
-              <SkeletonText noOfLines={3} spacing="4" />
-            </Box>
-            <Box p={5} borderRadius={5} boxShadow="md" bg="white">
-              <SkeletonText noOfLines={3} spacing="4" />
-            </Box>
             <Box p={5} borderRadius={5} boxShadow="md" bg="white">
               <SkeletonText noOfLines={3} spacing="4" />
             </Box>

@@ -1,4 +1,4 @@
-import { Divider, Box, Text, Heading } from "@chakra-ui/react";
+import { Box, Text, Heading, SimpleGrid } from "@chakra-ui/react";
 import KopitCase from "./kopitCase";
 import Vaccination from "./vaccination";
 import Hospitalization from "./hospitalization";
@@ -16,32 +16,33 @@ export default function Home({
       <Box>
         {error ? (
           <Box my={10} bg="gray.100" borderRadius={10} p={5} align="center">
-            <Box color="yellow.500" fontSize="5xl">
+            <Text color="yellow.500" fontSize="6xl" my={3}>
               <MdReportProblem />
-            </Box>
+            </Text>
             <Heading fontSize="lg">
-              Ada masalah di API untuk mengambil data.
+              Ada masalah di API untuk mengambil data kasus.
             </Heading>
             <Text>Error: {error}</Text>
           </Box>
         ) : (
-          <>
-            <KopitCase
-              py={6}
-              caseToday={caseToday}
-              caseYesterday={caseYesterday}
-              changesCounter={changesCounter}
-            />
-            <Divider />
-            <Vaccination py={6} vaccData={vaccData} />
-            <Divider />
-            <Hospitalization
-              py={6}
-              caseToday={caseToday}
-              caseYesterday={caseYesterday}
-              changesCounter={changesCounter}
-            />
-          </>
+          <Box my={6}>
+            <SimpleGrid
+              minChildWidth={["94%", "94%", "94%", "47%"]}
+              spacing={3}
+            >
+              <KopitCase
+                caseToday={caseToday}
+                caseYesterday={caseYesterday}
+                changesCounter={changesCounter}
+              />
+              <Hospitalization
+                caseToday={caseToday}
+                caseYesterday={caseYesterday}
+                changesCounter={changesCounter}
+              />
+            </SimpleGrid>
+            <Vaccination mt={5} vaccData={vaccData} />
+          </Box>
         )}
       </Box>
     </>

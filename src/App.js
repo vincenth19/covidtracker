@@ -27,7 +27,6 @@ import Footer from "./components/footer";
 import DataProvinsi from "./components/dataProvinsi/dataProvinsi";
 
 function App() {
-  const [caseData, setCaseData] = useState();
   const [caseToday, setCaseToday] = useState();
   const [caseYesterday, setCaseYesterday] = useState();
   const [vaccination, setVaccination] = useState();
@@ -36,10 +35,9 @@ function App() {
   const handleToggle = () => (isOpen ? onClose() : onOpen());
 
   function setData1(data) {
-    setCaseData(data);
-    let top = data.update.update.harian.pop();
+    let top = data.pop();
     setCaseToday(top);
-    let dayMin1 = data.update.update.harian.pop();
+    let dayMin1 = data.pop();
     setCaseYesterday(dayMin1);
   }
 
@@ -62,7 +60,10 @@ function App() {
       });
   }
   useEffect(() => {
-    apiGet("https://disease.sh/v3/covid-19/gov/ID", setData1);
+    apiGet(
+      "https://apicovid19indonesia-v2.vercel.app/api/indonesia/harian",
+      setData1
+    );
     apiGet("https://vaksincovid19-api.vercel.app/api/vaksin", setVaccination);
   }, []);
 
@@ -99,7 +100,8 @@ function App() {
                     textAlign="left"
                     display={["none", "flex"]}
                     date={
-                      caseToday && new Date(caseToday.key).toLocaleDateString()
+                      caseToday &&
+                      new Date(caseToday.tanggal).toLocaleDateString()
                     }
                   />
                 </Stack>
@@ -117,7 +119,7 @@ function App() {
                 direction={{ base: "column", md: "row" }}
                 display={{
                   base: isOpen ? "flex" : "none",
-                  md: "none",
+                  md: isOpen ? "flex" : "none",
                   lg: "flex",
                 }}
                 width={["full", "full", "full", "auto"]}
@@ -164,7 +166,8 @@ function App() {
                 <UpdateTime
                   textAlign="right"
                   date={
-                    caseToday && new Date(caseToday.key).toLocaleDateString()
+                    caseToday &&
+                    new Date(caseToday.tanggal).toLocaleDateString()
                   }
                   display={["flex", "none"]}
                 />
@@ -174,7 +177,7 @@ function App() {
 
             <Switch>
               <Route path="/data-provinsi">
-                <DataProvinsi data={caseData} />
+                <DataProvinsi />
               </Route>
               <Route path="/home">
                 <Home

@@ -102,12 +102,12 @@ export default function Vaccination({ vaccData, ...props }) {
                       {key.cardTitle}
                     </StatLabel>
                     <StatNumber>
-                      <CountUp separator=" " end={key.data} />
+                      <CountUp separator="." end={key.data} />
                     </StatNumber>
                     <StatHelpText>
                       <CountUp
-                        separator=" "
-                        decimal="."
+                        separator="."
+                        decimal=","
                         decimals={2}
                         end={key.helperText}
                       />
