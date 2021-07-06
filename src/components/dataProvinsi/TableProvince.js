@@ -3,6 +3,7 @@ import { Text, Box, Heading, Spinner, Flex } from "@chakra-ui/react";
 import DataTable from "mui-datatables";
 import CountUp from "react-countup";
 import { MdReportProblem } from "react-icons/md";
+import Loading from "../loading";
 
 export default function TableProvince({ ...props }) {
   const [localCaseData, setLocalCaseData] = useState();
@@ -206,11 +207,7 @@ export default function TableProvince({ ...props }) {
         />
       );
     } else {
-      return (
-        <Flex justifyContent="center" alignItems="center" minH="70vh">
-          <Spinner color="red.500" size="xl" />
-        </Flex>
-      );
+      return <Loading minH="70vh" />;
     }
   }
 

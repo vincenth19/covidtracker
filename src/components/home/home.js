@@ -3,6 +3,7 @@ import KopitCase from "./kopitCase";
 import Vaccination from "./vaccination";
 import Hospitalization from "./hospitalization";
 import { MdReportProblem } from "react-icons/md";
+import DailyCase from "../charts/dailyCase";
 
 export default function Home({
   caseToday,
@@ -28,7 +29,7 @@ export default function Home({
           <Box my={6}>
             <SimpleGrid
               minChildWidth={["94%", "94%", "94%", "47%"]}
-              spacing={3}
+              spacing={6}
             >
               <KopitCase
                 caseToday={caseToday}
@@ -42,6 +43,7 @@ export default function Home({
               />
             </SimpleGrid>
             <Vaccination mt={5} vaccData={vaccData} />
+            <DailyCase />
           </Box>
         )}
       </Box>

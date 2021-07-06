@@ -27,6 +27,7 @@ import Footer from "./components/footer";
 import DataProvinsi from "./components/dataProvinsi/dataProvinsi";
 
 function App() {
+  const [caseData, setCaseData] = useState();
   const [caseToday, setCaseToday] = useState();
   const [caseYesterday, setCaseYesterday] = useState();
   const [vaccination, setVaccination] = useState();
@@ -35,6 +36,13 @@ function App() {
   const handleToggle = () => (isOpen ? onClose() : onOpen());
 
   function setData1(data) {
+    //setCaseData(data);
+    let temp;
+    data.forEach((element) => {
+      temp = new Date(element.tanggal);
+      element.tanggal = temp.toLocaleDateString();
+    });
+    sessionStorage.setItem("data_chart", JSON.stringify(data));
     let top = data.pop();
     setCaseToday(top);
     let dayMin1 = data.pop();
@@ -181,6 +189,7 @@ function App() {
               </Route>
               <Route path="/home">
                 <Home
+                  caseData={caseData}
                   caseToday={caseToday}
                   caseYesterday={caseYesterday}
                   vaccData={vaccination}

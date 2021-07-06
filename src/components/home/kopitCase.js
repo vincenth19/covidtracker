@@ -65,7 +65,7 @@ export default function Vaccination({
 
   return (
     <Box {...props}>
-      <HStack pb={2}>
+      <HStack>
         <Text fontSize="4xl" color="teal.400">
           <RiSurgicalMaskFill />
         </Text>
@@ -74,7 +74,11 @@ export default function Vaccination({
         </Text>
       </HStack>
       {/* {{lg: "23.5%", md: "47%", sm: "47%", base: "94%"}} */}
-      <SimpleGrid minChildWidth={["94%", "47%", "47%", "23.5%"]} spacing="2%">
+      <SimpleGrid
+        mt={2}
+        minChildWidth={["94%", "47%", "47%", "23.5%"]}
+        spacing="2%"
+      >
         {caseToday ? (
           todayArr.map((key, index) => {
             return (
@@ -97,7 +101,7 @@ export default function Vaccination({
                       {key.cardTitle}
                     </StatLabel>
                     <StatNumber>
-                      <CountUp separator=" " end={key.data} />
+                      <CountUp separator="." end={key.data} />
                     </StatNumber>
                     <Flex alignItems="center" fontSize="0.8rem">
                       {key.changes.percentage > 0 ? (
