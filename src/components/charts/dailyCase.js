@@ -25,7 +25,9 @@ export default function DailyCase({ ...props }) {
 
   useEffect(() => {
     setChartData(JSON.parse(sessionStorage.getItem("data_chart")));
-  }, [chartData]);
+  }, []);
+
+  useEffect(() => {}, []);
 
   return (
     <Box mt={6} {...props}>
@@ -120,12 +122,11 @@ function Chart({ data, quantity }) {
           <XAxis dataKey="tanggal" />
           <YAxis />
           <Tooltip />
-          <Legend />
+          <Legend orientation="" />
           <Line
             type="monotone"
             dataKey={quantity === "harian" ? "positif" : "positif_kumulatif"}
             stroke="#E53E3E"
-            //activeDot={{ r: 8 }}
             dot={false}
           />
           <Line

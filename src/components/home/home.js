@@ -43,7 +43,7 @@ export default function Home({
               />
             </SimpleGrid>
             <Vaccination mt={5} vaccData={vaccData} />
-            <DailyCase />
+            {/* <DailyCase /> */}
           </Box>
         )}
       </Box>
