@@ -35,8 +35,6 @@ function App() {
   const handleToggle = () => (isOpen ? onClose() : onOpen());
 
   function setData1(data) {
-    //console.log("set", data.length);
-
     let temp;
     data.forEach((element) => {
       temp = new Date(element.tanggal);
@@ -106,7 +104,9 @@ function App() {
                     display={["none", "flex"]}
                     date={
                       caseData &&
-                      new Date(caseData.tanggal).toLocaleDateString()
+                      new Date(
+                        caseData[caseData.length - 1].tanggal
+                      ).toLocaleDateString()
                     }
                   />
                 </Stack>
@@ -171,14 +171,16 @@ function App() {
                 <UpdateTime
                   textAlign="right"
                   date={
-                    caseData && new Date(caseData.tanggal).toLocaleDateString()
+                    caseData &&
+                    new Date(
+                      caseData[caseData.length - 1].tanggal
+                    ).toLocaleDateString()
                   }
                   display={["flex", "none"]}
                 />
               </Stack>
             </Flex>
             {/* router */}
-
             <Switch>
               <Route path="/data-provinsi">
                 <DataProvinsi />
