@@ -49,7 +49,7 @@ export default function TableProvince({ ...props }) {
             let val = localCaseData[dataIndex].kasus;
             let x = (
               <Text>
-                <CountUp separator=" " end={val} />
+                <CountUp separator="," end={val} />
               </Text>
             );
             return x;
@@ -82,7 +82,7 @@ export default function TableProvince({ ...props }) {
             let val = localCaseData[dataIndex].kasus;
             let x = (
               <Text>
-                <CountUp separator=" " end={val} />
+                <CountUp separator="," end={val} />
               </Text>
             );
             return x;
@@ -115,7 +115,7 @@ export default function TableProvince({ ...props }) {
             let val = localCaseData[dataIndex].kasus;
             let x = (
               <Text>
-                <CountUp separator=" " end={val} />
+                <CountUp separator="," end={val} />
               </Text>
             );
             return x;
@@ -148,7 +148,7 @@ export default function TableProvince({ ...props }) {
             let val = localCaseData[dataIndex].kasus;
             let x = (
               <Text>
-                <CountUp separator=" " end={val} />
+                <CountUp separator="," end={val} />
               </Text>
             );
             return x;
@@ -179,7 +179,7 @@ export default function TableProvince({ ...props }) {
       .then((data) => {
         setLocalCaseData(data);
         sessionStorage.setItem("data_provinsi", JSON.stringify(data));
-        //console.log("api", data);
+        console.log("api", data);
       })
       .catch((error) => {
         setApiError(error.toString());
@@ -198,7 +198,7 @@ export default function TableProvince({ ...props }) {
   }, []);
 
   function isDataReady() {
-    if (sessionStorage["data_provinsi"]) {
+    if (localCaseData) {
       return (
         <DataTable
           title={"Data Provinsi"}

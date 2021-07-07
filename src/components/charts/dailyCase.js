@@ -26,9 +26,9 @@ export default function DailyCase({ mainData, ...props }) {
   useEffect(() => {
     if (mainData) {
       setChartData(mainData);
-      console.log("a", mainData);
+      //console.log("a", mainData);
     } else {
-      console.log("zzz");
+      //console.log("zzz");
     }
   }, [mainData]);
 
