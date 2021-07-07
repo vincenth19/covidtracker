@@ -179,7 +179,7 @@ export default function TableProvince({ ...props }) {
       .then((data) => {
         setLocalCaseData(data);
         sessionStorage.setItem("data_provinsi", JSON.stringify(data));
-        console.log("api", data);
+        //console.log("api", data);
       })
       .catch((error) => {
         setApiError(error.toString());
