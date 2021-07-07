@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Text, Box, Heading, Spinner, Flex } from "@chakra-ui/react";
+import { Text, Box, Heading } from "@chakra-ui/react";
 import DataTable, { debounceSearchRender } from "mui-datatables";
 import CountUp from "react-countup";
 import { MdReportProblem } from "react-icons/md";

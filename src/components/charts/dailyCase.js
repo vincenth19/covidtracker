@@ -19,15 +19,18 @@ import {
 } from "recharts";
 import Loading from "../loading";
 
-export default function DailyCase({ ...props }) {
+export default function DailyCase({ mainData, ...props }) {
   const [chartData, setChartData] = useState();
   const [quantity, setQuatity] = useState("harian");
 
   useEffect(() => {
-    setChartData(JSON.parse(sessionStorage.getItem("data_chart")));
-  }, []);
-
-  useEffect(() => {}, []);
+    if (mainData) {
+      setChartData(mainData);
+      console.log("a", mainData);
+    } else {
+      console.log("zzz");
+    }
+  }, [mainData]);
 
   return (
     <Box mt={6} {...props}>
@@ -38,8 +41,10 @@ export default function DailyCase({ ...props }) {
           : "Perkembangan Kasus Secara Kumulatif"}
       </Text>
       <RadioQuantity setQuatity={setQuatity} />
-      {sessionStorage["data_chart"] ? (
-        <Chart data={chartData} quantity={quantity} />
+      {mainData ? (
+        <>
+          <Chart data={chartData} quantity={quantity} />
+        </>
       ) : (
         <Loading minH="10vh" mt={5} />
       )}
@@ -105,7 +110,7 @@ function CustomRadio(props) {
 
 function Chart({ data, quantity }) {
   return (
-    <>
+    <Box>
       <Flex justifyContent="center" mt={5}>
         <LineChart
           width={window.innerWidth > 1000 ? 1000 : window.innerWidth - 20}
@@ -119,10 +124,11 @@ function Chart({ data, quantity }) {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
+          <Brush travellerWidth={30} />
           <XAxis dataKey="tanggal" />
           <YAxis />
           <Tooltip />
-          <Legend orientation="" />
+          <Legend verticalAlign="top" height={36} />
           <Line
             type="monotone"
             dataKey={quantity === "harian" ? "positif" : "positif_kumulatif"}
@@ -149,9 +155,8 @@ function Chart({ data, quantity }) {
             stroke="#000"
             dot={false}
           />
-          <Brush travellerWidth={50} />
         </LineChart>
       </Flex>
-    </>
+    </Box>
   );
 }

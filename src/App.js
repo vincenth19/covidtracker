@@ -25,28 +25,24 @@ import Virus from "./virus.png";
 import Home from "./components/home/home";
 import Footer from "./components/footer";
 import DataProvinsi from "./components/dataProvinsi/dataProvinsi";
+import axios from "axios";
 
 function App() {
   const [caseData, setCaseData] = useState();
-  const [caseToday, setCaseToday] = useState();
-  const [caseYesterday, setCaseYesterday] = useState();
   const [vaccination, setVaccination] = useState();
   const [error, setError] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleToggle = () => (isOpen ? onClose() : onOpen());
 
   function setData1(data) {
-    //setCaseData(data);
+    //console.log("set", data.length);
+
     let temp;
     data.forEach((element) => {
       temp = new Date(element.tanggal);
       element.tanggal = temp.toLocaleDateString();
     });
-    sessionStorage.setItem("data_chart", JSON.stringify(data));
-    let top = data.pop();
-    setCaseToday(top);
-    let dayMin1 = data.pop();
-    setCaseYesterday(dayMin1);
+    setCaseData(data);
   }
 
   function changesCounter(currentData, prevData) {
@@ -57,10 +53,11 @@ function App() {
   }
 
   async function apiGet(apiURL, setter, queryParam = "") {
-    fetch(apiURL + queryParam)
-      .then((response) => response.json())
-      .then((data) => {
-        setter(data);
+    axios
+      .get(apiURL + queryParam)
+      .then((response) => {
+        //"res", response.data);
+        setter(response.data);
       })
       .catch((error) => {
         setError(error.toString());
@@ -108,8 +105,8 @@ function App() {
                     textAlign="left"
                     display={["none", "flex"]}
                     date={
-                      caseToday &&
-                      new Date(caseToday.tanggal).toLocaleDateString()
+                      caseData &&
+                      new Date(caseData.tanggal).toLocaleDateString()
                     }
                   />
                 </Stack>
@@ -174,8 +171,7 @@ function App() {
                 <UpdateTime
                   textAlign="right"
                   date={
-                    caseToday &&
-                    new Date(caseToday.tanggal).toLocaleDateString()
+                    caseData && new Date(caseData.tanggal).toLocaleDateString()
                   }
                   display={["flex", "none"]}
                 />
@@ -190,8 +186,6 @@ function App() {
               <Route path="/home">
                 <Home
                   caseData={caseData}
-                  caseToday={caseToday}
-                  caseYesterday={caseYesterday}
                   vaccData={vaccination}
                   changesCounter={changesCounter}
                   error={error}
