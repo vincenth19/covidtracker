@@ -79,7 +79,7 @@ export default function TableProvince({ ...props }) {
         filterType: "textField",
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
-            let val = localCaseData[dataIndex].kasus;
+            let val = localCaseData[dataIndex].dirawat;
             let x = (
               <Text>
                 <CountUp separator="," end={val} />
@@ -112,7 +112,7 @@ export default function TableProvince({ ...props }) {
         filterType: "textField",
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
-            let val = localCaseData[dataIndex].kasus;
+            let val = localCaseData[dataIndex].sembuh;
             let x = (
               <Text>
                 <CountUp separator="," end={val} />
@@ -145,7 +145,7 @@ export default function TableProvince({ ...props }) {
         filterType: "textField",
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
-            let val = localCaseData[dataIndex].kasus;
+            let val = localCaseData[dataIndex].meninggal;
             let x = (
               <Text>
                 <CountUp separator="," end={val} />
