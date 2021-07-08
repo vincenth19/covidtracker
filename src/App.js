@@ -148,26 +148,21 @@ function App() {
                 <Link
                   href="http://yankes.kemkes.go.id/app/siranap/"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   Cari RS COVID
                 </Link>
-                <a
-                  href="https://linkedin.com/in/vincenth19"
+                <Button
+                  as={Link}
+                  size="sm"
+                  colorScheme="red"
+                  variant="outline"
+                  href="https://vincenth19.com"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <Button
-                    as={Link}
-                    size="sm"
-                    colorScheme="red"
-                    variant="outline"
-                    href="https://vincenth19.com"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    About Me
-                  </Button>
-                </a>
+                  About Me
+                </Button>
                 <UpdateTime
                   textAlign="right"
                   date={
