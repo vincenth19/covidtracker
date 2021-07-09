@@ -19,6 +19,7 @@ import Vaccination from "./vaccination";
 import Hospitalization from "./hospitalization";
 import { MdReportProblem } from "react-icons/md";
 import DailyCase from "../charts/dailyCase";
+import KemkesChart from "../kemkesTableau/charts";
 import {
   RiWhatsappFill,
   RiCloseCircleLine,
@@ -60,6 +61,12 @@ export default function Home({ caseData, changesCounter, vaccData, error }) {
             <DailyCase mainData={caseData} />
           </Box>
         )}
+        <Stack>
+          <Text mt={5} fontSize="xl" fontWeight="bold">
+            Statistik Kemenkes
+          </Text>
+          <KemkesChart />
+        </Stack>
       </Box>
     </>
   );

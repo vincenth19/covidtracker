@@ -68,6 +68,11 @@ function App() {
       setData1
     );
     apiGet("https://vaksincovid19-api.vercel.app/api/vaksin", setVaccination);
+    console.log("test");
+    axios.get("https://cekdiri.id/vaksinasi/").then((res) => {
+      console.log("hhee");
+      console.log(res.data);
+    });
   }, []);
 
   const ACTIVE_LINK = {
