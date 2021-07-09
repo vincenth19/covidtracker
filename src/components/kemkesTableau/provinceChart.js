@@ -9,7 +9,7 @@ export default function ProvinceCharts() {
         style={{ position: "relative", height: "1000px", width: "100%" }}
       >
         <noscript>
-          <a href="#">
+          <a href="https://covidtracker.pages.dev/home">
             <img
               alt="assesm prov "
               src="https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;as&#47;asesmensituasiprovinsi&#47;assesmprov&#47;1_rss.png"

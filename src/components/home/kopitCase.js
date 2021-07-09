@@ -11,11 +11,9 @@ import {
   SkeletonText,
 } from "@chakra-ui/react";
 
-import {
-  RiVirusFill,
-  RiSurgicalMaskFill,
-  RiEmotionUnhappyFill,
-} from "react-icons/ri";
+import { RiVirusFill, RiSurgicalMaskFill } from "react-icons/ri";
+
+import { GiTombstone } from "react-icons/gi";
 import CountUp from "react-countup";
 
 export default function Vaccination({ caseData, changesCounter, ...props }) {
@@ -46,7 +44,7 @@ export default function Vaccination({ caseData, changesCounter, ...props }) {
       {
         iconBg: "gray.100",
         iconColor: "gray.500",
-        icon: <RiEmotionUnhappyFill />,
+        icon: <GiTombstone />,
         cardTitle: "TOTAL KEMATIAN",
         data: today.meninggal_kumulatif,
         increaseArrowColor: "red.500",

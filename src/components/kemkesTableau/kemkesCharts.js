@@ -8,16 +8,12 @@ export default function KemkesCharts() {
   const [area, setArea] = useState("nasional");
 
   function renderChart() {
-    switch (area) {
-      case "nasional":
-        return <ProvinceChart />;
-        break;
-      case "kota":
-        return <CityChart />;
-        break;
-      default:
-        return <Loading minH="10vh" mt={5} />;
-        break;
+    if (area === "nasional") {
+      return <ProvinceChart />;
+    } else if (area === "kota") {
+      return <CityChart />;
+    } else {
+      return <Loading minH="10vh" mt={5} />;
     }
   }
 
