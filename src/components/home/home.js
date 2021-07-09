@@ -4,8 +4,6 @@ import {
   Text,
   Heading,
   SimpleGrid,
-  Alert,
-  AlertIcon,
   Stack,
   Link,
   List,
@@ -19,7 +17,9 @@ import Vaccination from "./vaccination";
 import Hospitalization from "./hospitalization";
 import { MdReportProblem } from "react-icons/md";
 import DailyCase from "../charts/dailyCase";
-import KemkesChart from "../kemkesTableau/charts";
+// import ProvinceChart from "../kemkesTableau/provinceChart";
+// import CityChart from "../kemkesTableau/cityChart";
+import KemkesCharts from "../kemkesTableau/kemkesCharts";
 import {
   RiWhatsappFill,
   RiCloseCircleLine,
@@ -65,7 +65,7 @@ export default function Home({ caseData, changesCounter, vaccData, error }) {
           <Text mt={5} fontSize="xl" fontWeight="bold">
             Statistik Kemenkes
           </Text>
-          <KemkesChart />
+          <KemkesCharts />
         </Stack>
       </Box>
     </>

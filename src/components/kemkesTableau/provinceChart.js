@@ -1,6 +1,6 @@
 import ScriptTag from "react-script-tag";
 
-export default function Charts() {
+export default function ProvinceCharts() {
   return (
     <>
       <div
@@ -43,7 +43,6 @@ export default function Charts() {
           <param name="display_overlay" value="yes" />
           <param name="display_count" value="yes" />
         </object>
-        <ScriptTag type="text/javascript" src="./script.js" />
       </div>
     </>
   );
