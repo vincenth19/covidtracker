@@ -13,6 +13,11 @@ Please star this project if you find it useful or interesting!
 CovidTracker was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and deployed to [Cloudflare Pages](https://pages.cloudflare.com)
 
 # How to Run This Project?
+
+### Prequisite:
+[NodeJS](https://nodejs.org/en/)
+
+### Steps:
 1. Clone this project
 2. Type and execute/run `npm i`. Wait until the installation is finished. 
 3. Type and execute/run `npm start` to start this project.
