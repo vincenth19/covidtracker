@@ -25,6 +25,7 @@ import Virus from "./virus.png";
 import Home from "./components/home/home";
 import Footer from "./components/footer";
 import DataProvinsi from "./components/dataProvinsi/dataProvinsi";
+import Info from "./components/info/info";
 import axios from "axios";
 
 function App() {
@@ -68,11 +69,6 @@ function App() {
       setData1
     );
     apiGet("https://vaksincovid19-api.vercel.app/api/vaksin", setVaccination);
-    console.log("test");
-    axios.get("https://cekdiri.id/vaksinasi/").then((res) => {
-      console.log("hhee");
-      console.log(res.data);
-    });
   }, []);
 
   const ACTIVE_LINK = {
@@ -150,12 +146,8 @@ function App() {
                 >
                   Data Provinsi
                 </Link>
-                <Link
-                  href="http://yankes.kemkes.go.id/app/siranap/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Cari RS COVID
+                <Link as={NavLink} activeStyle={ACTIVE_LINK} to="/info">
+                  Info Bantuan
                 </Link>
                 <Button
                   as={Link}
@@ -184,6 +176,9 @@ function App() {
             <Switch>
               <Route path="/data-provinsi">
                 <DataProvinsi />
+              </Route>
+              <Route path="/info">
+                <Info />
               </Route>
               <Route path="/home">
                 <Home
