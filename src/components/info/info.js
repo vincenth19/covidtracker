@@ -33,28 +33,29 @@ export default function Info() {
       <Text>
         Ini adalah kumpulan berbagai macam informasi tentang COVID-19. Dari
         oksigen, ambulan, rumah sakit, vaksinasi, dan lain-lain.
-        <br />
-        Bisa{" "}
-        <Link
-          href="mailto:vincenthary19@gmail.com"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Text color="blue.500" as="u">
-            email
-          </Text>
-        </Link>{" "}
-        atau cari saya di{" "}
-        <Link
-          href="https://www.instagram.com/vincenth19/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Text color="blue.500" as="u">
-            instagram
-          </Text>
-        </Link>{" "}
-        jika mau menambahkan/memperbaiki informasi.
+        <Text mt={1}>
+          Bisa{" "}
+          <Link
+            href="mailto:vincenthary19@gmail.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Text color="blue.500" as="u">
+              email
+            </Text>
+          </Link>{" "}
+          atau cari saya di{" "}
+          <Link
+            href="https://www.instagram.com/vincenth19/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Text color="blue.500" as="u">
+              instagram
+            </Text>
+          </Link>{" "}
+          jika mau menambahkan/memperbaiki informasi.
+        </Text>
       </Text>
       <Box>
         <SimpleGrid mt={2} minChildWidth={["94%", "47%"]} spacing="2%">
@@ -123,7 +124,7 @@ export default function Info() {
               <Stack spacing={1}>
                 <Link href="https://www.wargabantuwarga.com/">
                   <Text fontSize="1rem" color="gray.500" fontWeight="semibold">
-                    Website informasi COVID
+                    Website informasi bantuan COVID-19
                   </Text>
                   Oleh tim WargaBantuWarga.com
                 </Link>
