@@ -32,7 +32,7 @@ export default function Info() {
       </Text>
       <Text>
         Ini adalah kumpulan berbagai macam informasi tentang COVID-19. Dari
-        oksigen, ambulan, rumah sakit, vaksinasi, dan lain-lain.
+        oksigen, ambulans, rumah sakit, vaksinasi, dan lain-lain.
         <Text mt={1}>
           Bisa{" "}
           <Link
