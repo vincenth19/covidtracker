@@ -122,7 +122,11 @@ export default function Info() {
                 </Text>
               </Box>
               <Stack spacing={1}>
-                <Link href="https://www.wargabantuwarga.com/">
+                <Link
+                  href="https://www.wargabantuwarga.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <Text fontSize="1rem" color="gray.500" fontWeight="semibold">
                     Website informasi bantuan COVID-19
                   </Text>

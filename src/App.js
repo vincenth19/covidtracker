@@ -146,6 +146,13 @@ function App() {
                 <Link as={NavLink} activeStyle={ACTIVE_LINK} to="/info">
                   Info Bantuan
                 </Link>
+                <Link
+                  href="https://covid19.go.id/pelaporan-mandiri"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Lapor Mandiri
+                </Link>
                 <Button
                   as={Link}
                   size="sm"
