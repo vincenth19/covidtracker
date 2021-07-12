@@ -12,6 +12,7 @@ import {
   Stack,
   Flex,
   SimpleGrid,
+  UnorderedList,
 } from "@chakra-ui/react";
 import {
   FaWhatsapp,
@@ -23,6 +24,7 @@ import {
 } from "react-icons/fa";
 import { GiWaterDrop } from "react-icons/gi";
 import { BiDonateBlood } from "react-icons/bi";
+import { RiCustomerService2Fill } from "react-icons/ri";
 
 export default function Info() {
   return (
@@ -74,9 +76,9 @@ export default function Info() {
                 </Text>
               </Box>
               <Stack spacing={1}>
-                <Link href="tel:119p9">
+                <Link href="tel:119">
                   <Text fontSize="1rem" color="gray.500" fontWeight="semibold">
-                    Hotline telpon Kemenkes
+                    Hotline Telepon Kemenkes
                   </Text>
                   119 extension 9
                 </Link>
@@ -98,7 +100,7 @@ export default function Info() {
                 </Text>
               </Box>
               <Stack spacing={1}>
-                <Link href="tel:117p5">
+                <Link href="tel:117">
                   <Text fontSize="1rem" color="gray.500" fontWeight="semibold">
                     Hotline Contact Center BNPB, Donor Konvalesen
                   </Text>
@@ -128,7 +130,7 @@ export default function Info() {
                   rel="noreferrer"
                 >
                   <Text fontSize="1rem" color="gray.500" fontWeight="semibold">
-                    Website informasi bantuan COVID-19
+                    Website Informasi Bantuan COVID-19
                   </Text>
                   Oleh tim WargaBantuWarga.com
                 </Link>
@@ -213,11 +215,11 @@ export default function Info() {
                 </ListItem>
                 <ListItem>
                   <Link
-                    href="http://bit.ly/pinjamoksi"
+                    href="https://www.klikdirektori.com/pedagang-tabung-oksigen-di-jabodetabek/"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Text>Pinjam Tabung Oxygen (Website)</Text>
+                    <Text>Pedagang Oksigen Jabodetabek (Website)</Text>
                   </Link>
                 </ListItem>
               </Stack>
@@ -400,6 +402,55 @@ export default function Info() {
                       Paket Obat-obatan Kimia Farma (Website Kemenkes)
                     </Text>
                   </Link>
+                  <UnorderedList my={3}>
+                    <Stack>
+                      <ListItem>
+                        <Link
+                          href="https://wa.me/628112223049"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <Text>CS Jakarta Timur (WhatsApp)</Text>
+                        </Link>
+                      </ListItem>
+                      <ListItem>
+                        <Link
+                          href="https://wa.me/628112221832"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <Text>CS Jakarta Utara (WhatsApp)</Text>
+                        </Link>
+                      </ListItem>
+                      <ListItem>
+                        <Link
+                          href="https://wa.me/6287877241590"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <Text>CS Jakarta Pusat (WhatsApp)</Text>
+                        </Link>
+                      </ListItem>
+                      <ListItem>
+                        <Link
+                          href="https://wa.me/62895324874355"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <Text>CS Jakarta Selatan (WhatsApp)</Text>
+                        </Link>
+                      </ListItem>
+                      <ListItem>
+                        <Link
+                          href="https://wa.me/6287877241405"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <Text>CS Jakarta Selatan (WhatsApp)</Text>
+                        </Link>
+                      </ListItem>
+                    </Stack>
+                  </UnorderedList>
                 </ListItem>
                 <ListItem>
                   <Link
@@ -417,6 +468,150 @@ export default function Info() {
                     rel="noreferrer"
                   >
                     <Text>Hotline Puskesmas (Website)</Text>
+                  </Link>
+                </ListItem>
+              </Stack>
+            </OrderedList>
+          </AccordionPanel>
+        </AccordionItem>
+
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box
+                flex="1"
+                textAlign="left"
+                fontWeight="semibold"
+                fontSize="1.2rem"
+              >
+                <Flex alignItems="center">
+                  <Text color="teal.500" mr={2}>
+                    <RiCustomerService2Fill />
+                  </Text>
+                  Telemedisin
+                </Flex>
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            <OrderedList>
+              <Stack>
+                <ListItem>
+                  <Link
+                    href="https://setkab.go.id/inilah-alur-layanan-telemedisin-bagi-pasien-isolasi-mandiri/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>Proses dan Panduan Telemedisin</Text>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    href="https://www.alodokter.com/lalui-masa-isolasi-dengan-layanan-dokter-pribadi-gratis-untuk-pasien-covid-19"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>Alodoc (Website)</Text>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    href="https://play.google.com/store/apps/details?id=id.paquesid.getwell"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>GetWell (Aplikasi Android)</Text>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    href="https://gooddoctor.onelink.me/Cmiw/webproducts"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>Good Doctor (Aplikasi iOS & Android)</Text>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    href="https://app.appsflyer.com/com.grabtaxi.passenger?pid=ID-Website-ADR-Install_Button&c=Website_Download"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>GrabHealth (Aplikasi iOS & Android)</Text>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    href="http://bit.ly/isoman_halodoc"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>Halodoc (Website)</Text>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    href="https://livechat.klikdokter.com/?category=Isoman%20Center&filter=121"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>KlikDokter (Website)</Text>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    href="https://www.klinikgo.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>KlinikGo (Website)</Text>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    href="https://link.linksehat.com/mRMf"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>LinkSehat (Aplikasi Android)</Text>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    href="https://milvik.id/our-product/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>Milvik Dokter (Website)</Text>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    href="https://www.prosehat.com/wa"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>ProSehat (WhatsApp)</Text>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    href="https://sehatqapp.onelink.me/bgzy?pid=kemenkes&c=sqkemenkes&deep_link_value=https%3A%2F%2Fwww.sehatq.com%2Ftelemed&af_web_dp=https%3A%2F%2Fwww.sehatq.com%2Ftelemed&af_dp=https%3A%2F%2Fwww.sehatq.com%2Ftelemed"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>SehatQ (Website)</Text>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    href="https://bit.ly/ISOMAN-YesDok"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>YesDok (Aplikasi iOS & Android)</Text>
                   </Link>
                 </ListItem>
               </Stack>
@@ -507,6 +702,15 @@ export default function Info() {
                     rel="noreferrer"
                   >
                     <Text>Seluruh Indonesia (Website Pemerintah)</Text>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
+                    href="https://pedulilindungi.id"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>PeduliLindungi (Website Pemerintah)</Text>
                   </Link>
                 </ListItem>
                 <ListItem>
