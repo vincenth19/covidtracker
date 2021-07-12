@@ -99,7 +99,12 @@ function InfoAlert({ setShowInfo, ...props }) {
             </Button>
           </Flex>
         </Flex>
-        <InfoStack />
+        <Link href="https://covidtracker.pages.dev/info">
+          <Text as="u">
+            Click tautan ini untuk cari informasi/buka halaman "Info Bantuan"
+          </Text>
+        </Link>
+        {/* <InfoStack /> */}
       </Stack>
     </Box>
   );
