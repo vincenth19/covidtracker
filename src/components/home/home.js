@@ -20,6 +20,7 @@ import DailyCase from "../charts/dailyCase";
 // import ProvinceChart from "../kemkesTableau/provinceChart";
 // import CityChart from "../kemkesTableau/cityChart";
 import KemkesCharts from "../kemkesTableau/kemkesCharts";
+import { NavLink } from "react-router-dom";
 import {
   RiWhatsappFill,
   RiCloseCircleLine,
@@ -99,10 +100,8 @@ function InfoAlert({ setShowInfo, ...props }) {
             </Button>
           </Flex>
         </Flex>
-        <Link href="https://covidtracker.pages.dev/info">
-          <Text as="u">
-            Click tautan ini untuk cari informasi/buka halaman "Info Bantuan"
-          </Text>
+        <Link as={NavLink} to="/info">
+          Click tautan ini untuk cari informasi/buka halaman "Info Bantuan"
         </Link>
         {/* <InfoStack /> */}
       </Stack>
