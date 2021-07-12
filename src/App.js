@@ -107,7 +107,7 @@ function App() {
                       caseData &&
                       new Date(
                         caseData[caseData.length - 1].tanggal
-                      ).toLocaleDateString()
+                      ).toLocaleDateString("id-ID")
                     }
                   />
                 </Stack>
@@ -166,7 +166,7 @@ function App() {
                     caseData &&
                     new Date(
                       caseData[caseData.length - 1].tanggal
-                    ).toLocaleDateString()
+                    ).toLocaleDateString("id-ID")
                   }
                   display={["flex", "none"]}
                 />
