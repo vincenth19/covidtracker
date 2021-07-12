@@ -367,6 +367,15 @@ export default function Info() {
                 </ListItem>
                 <ListItem>
                   <Link
+                    href="http://eis.dinkes.jakarta.go.id/eis/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>Daftar Rumah Sakit di Jakarta (DKI Jakarta)</Text>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link
                     href="https://covid19.go.id/daftar-rumah-sakit-rujukan"
                     target="_blank"
                     rel="noreferrer"
