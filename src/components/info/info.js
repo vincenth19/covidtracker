@@ -260,6 +260,15 @@ export default function Info() {
                     <Text>Blood 4 Life (Website)</Text>
                   </Link>
                 </ListItem>
+                <ListItem>
+                  <Link
+                    href="https://ahaha.id"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Text>Cari/Memberi Donor Darah Konvalesen</Text>
+                  </Link>
+                </ListItem>
               </Stack>
             </OrderedList>
           </AccordionPanel>
