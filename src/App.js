@@ -32,6 +32,7 @@ function App() {
   const [caseData, setCaseData] = useState();
   const [vaccination, setVaccination] = useState();
   const [error, setError] = useState("");
+  const [tanggal, setTanggal] = useState();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleToggle = () => (isOpen ? onClose() : onOpen());
 
@@ -39,8 +40,9 @@ function App() {
     let temp;
     data.forEach((element) => {
       temp = new Date(element.tanggal);
-      element.tanggal = temp.toLocaleDateString();
+      element.tanggal = temp.toLocaleDateString("id-ID");
     });
+    setTanggal(data[data.length - 1].tanggal);
     setCaseData(data);
   }
 
@@ -103,12 +105,7 @@ function App() {
                   <UpdateTime
                     textAlign="left"
                     display={["none", "flex"]}
-                    date={
-                      caseData &&
-                      new Date(
-                        caseData[caseData.length - 1].tanggal
-                      ).toLocaleDateString("id-ID")
-                    }
+                    date={tanggal}
                   />
                 </Stack>
               </Flex>
@@ -162,12 +159,7 @@ function App() {
                 </Button>
                 <UpdateTime
                   textAlign="right"
-                  date={
-                    caseData &&
-                    new Date(
-                      caseData[caseData.length - 1].tanggal
-                    ).toLocaleDateString("id-ID")
-                  }
+                  date={tanggal}
                   display={["flex", "none"]}
                 />
               </Stack>

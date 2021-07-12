@@ -14,8 +14,6 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react";
 import {
-  FaInstagram,
-  FaGoogleDrive,
   FaWhatsapp,
   FaHospital,
   FaBuilding,
