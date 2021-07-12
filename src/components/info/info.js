@@ -512,7 +512,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Text>Alodoc (Website)</Text>
+                    <Text>Alodokter (Website)</Text>
                   </Link>
                 </ListItem>
                 <ListItem>
@@ -535,7 +535,7 @@ export default function Info() {
                 </ListItem>
                 <ListItem>
                   <Link
-                    href="https://app.appsflyer.com/com.grabtaxi.passenger?pid=ID-Website-ADR-Install_Button&c=Website_Download"
+                    href="https://www.grab.com/id/download/?shortlink=fe73b8c5&pid=Kemenkes&c=ID_GrabHealth_isomangrabhealth_Kemenkes&is_retargeting=true"
                     target="_blank"
                     rel="noreferrer"
                   >
