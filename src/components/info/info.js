@@ -158,7 +158,7 @@ export default function Info() {
           </Box>
         </SimpleGrid>
       </Box>
-      <Accordion defaultIndex={[0]} allowMultiple mt={6}>
+      <Accordion defaultIndex={[0]} allowMultiple mt={[12, 5]}>
         <AccordionItem>
           <h2>
             <AccordionButton>
@@ -187,14 +187,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>@gerakantabungoksigen.drj</Text>
-                      <Flex alignItems="center">
-                        (
-                        <FaInstagram />
-                        <Text ml={1}>Instagram)</Text>
-                      </Flex>
-                    </Stack>
+                    <Text>@gerakantabungoksigen.drj (Instagram)</Text>
                   </Link>
                 </ListItem>
                 <ListItem>
@@ -203,9 +196,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>Info Oxygen (Website)</Text>
-                    </Stack>
+                    <Text>Info Oxygen (Website)</Text>
                   </Link>
                 </ListItem>
                 <ListItem>
@@ -214,14 +205,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>Oxygen Jakarta</Text>
-                      <Flex alignItems="center">
-                        (
-                        <FaGoogleDrive />
-                        <Text ml={1}>Google Drive)</Text>
-                      </Flex>
-                    </Stack>
+                    <Text>Oxygen Jakarta (Google Drive)</Text>
                   </Link>
                 </ListItem>
                 <ListItem>
@@ -230,9 +214,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>Pinjam Tabung Oxygen (Website)</Text>
-                    </Stack>
+                    <Text>Pinjam Tabung Oxygen (Website)</Text>
                   </Link>
                 </ListItem>
               </Stack>
@@ -268,14 +250,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>Group WhatsApp per Daerah</Text>
-                      <Flex alignItems="center">
-                        (
-                        <FaWhatsapp />
-                        <Text ml={1}>WhatsApp)</Text>
-                      </Flex>
-                    </Stack>
+                    <Text>Group WhatsApp per Daerah (WhatsApp)</Text>
                   </Link>
                 </ListItem>
                 <ListItem>
@@ -284,9 +259,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>Blood 4 Life (Website)</Text>
-                    </Stack>
+                    <Text>Blood 4 Life (Website)</Text>
                   </Link>
                 </ListItem>
               </Stack>
@@ -322,11 +295,9 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>
-                        Palang Merah Indonesia (PMI, Website Pemerintah)
-                      </Text>
-                    </Stack>
+                    <Text>
+                      Palang Merah Indonesia (PMI, Website Pemerintah)
+                    </Text>
                   </Link>
                 </ListItem>
                 <ListItem>
@@ -335,14 +306,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>@yukdonorplasma</Text>
-                      <Flex alignItems="center">
-                        (
-                        <FaInstagram />
-                        <Text ml={1}>Instagram)</Text>
-                      </Flex>
-                    </Stack>
+                    <Text>@yukdonorplasma (Instagram)</Text>
                   </Link>
                 </ListItem>
                 <ListItem>
@@ -351,9 +315,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>ReBlood (Website)</Text>
-                    </Stack>
+                    <Text>ReBlood (Website)</Text>
                   </Link>
                 </ListItem>
               </Stack>
@@ -389,12 +351,10 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>
-                        Cari Ketersediaan Rumah Sakit Non/COVID-19 (Website
-                        Kemenkes)
-                      </Text>
-                    </Stack>
+                    <Text>
+                      Cari Ketersediaan Rumah Sakit Non/COVID-19 (Website
+                      Kemenkes)
+                    </Text>
                   </Link>
                 </ListItem>
                 <ListItem>
@@ -403,12 +363,10 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>
-                        Daftar Rumah Sakit Rujukan COVID-19 (Website Pemerintah
-                        Indonesia)
-                      </Text>
-                    </Stack>
+                    <Text>
+                      Daftar Rumah Sakit Rujukan COVID-19 (Website Pemerintah
+                      Indonesia)
+                    </Text>
                   </Link>
                 </ListItem>
                 <ListItem>
@@ -417,11 +375,9 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>
-                        Paket Obat-obatan Kimia Farma (Website Kemenkes)
-                      </Text>
-                    </Stack>
+                    <Text>
+                      Paket Obat-obatan Kimia Farma (Website Kemenkes)
+                    </Text>
                   </Link>
                 </ListItem>
                 <ListItem>
@@ -430,9 +386,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>Hotline Rumah Sakit (Website)</Text>
-                    </Stack>
+                    <Text>Hotline Rumah Sakit (Website)</Text>
                   </Link>
                 </ListItem>
                 <ListItem>
@@ -441,9 +395,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>Hotline Puskesmas (Website)</Text>
-                    </Stack>
+                    <Text>Hotline Puskesmas (Website)</Text>
                   </Link>
                 </ListItem>
               </Stack>
@@ -479,9 +431,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>Seluruh Indonesia (Website)</Text>
-                    </Stack>
+                    <Text>Seluruh Indonesia (Website)</Text>
                   </Link>
                 </ListItem>
                 <ListItem>
@@ -490,9 +440,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>Jawa Barat (Website)</Text>
-                    </Stack>
+                    <Text>Jawa Barat (Website)</Text>
                   </Link>
                 </ListItem>
                 <ListItem>
@@ -501,9 +449,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>Panduan IsoMan (Website)</Text>
-                    </Stack>
+                    <Text>Panduan IsoMan (Website)</Text>
                   </Link>
                 </ListItem>
               </Stack>
@@ -539,9 +485,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>Seluruh Indonesia (Website Pemerintah)</Text>
-                    </Stack>
+                    <Text>Seluruh Indonesia (Website Pemerintah)</Text>
                   </Link>
                 </ListItem>
                 <ListItem>
@@ -550,14 +494,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>@infovaksincovid_19</Text>
-                      <Flex alignItems="center">
-                        (
-                        <FaInstagram />
-                        <Text ml={1}>Instagram)</Text>
-                      </Flex>
-                    </Stack>
+                    <Text>@infovaksincovid_19 (Instagram)</Text>
                   </Link>
                 </ListItem>
                 <ListItem>
@@ -577,9 +514,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Stack direction="row" alignItems="center">
-                      <Text>Tim Relawan Digital (Website)</Text>
-                    </Stack>
+                    <Text>Tim Relawan Digital (Website)</Text>
                   </Link>
                 </ListItem>
               </Stack>
