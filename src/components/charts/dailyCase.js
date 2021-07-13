@@ -173,7 +173,7 @@ function Chart({data, quantity}) {
                 >
                     <CartesianGrid strokeDasharray="3 3"/>
                     <Brush
-                        travellerWidth={15}
+                        travellerWidth={chartWidth() < 1000 ? 30 : 15}
                         width={chartWidth() * 0.8}
                         dataKey="tanggal"
                         x={chartWidth() * 0.1}
