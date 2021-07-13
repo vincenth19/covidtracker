@@ -16,6 +16,7 @@ import {
     Tooltip,
     Legend,
     Brush,
+    ResponsiveContainer
 } from "recharts";
 import Loading from "../loading";
 
@@ -152,12 +153,14 @@ function Chart({data, quantity}) {
         },
         [hidden, setHidden]
     );
-
+    const chartWidth = () => {
+        return window.innerWidth > 1000 ? 1000 : window.innerWidth - 20
+    };
     return (
         <Box>
             <Flex justifyContent="center" mt={5}>
                 <LineChart
-                    width={window.innerWidth > 1000 ? 1000 : window.innerWidth - 20}
+                    width={chartWidth()}
                     height={500}
                     data={data}
                     margin={{
@@ -168,7 +171,12 @@ function Chart({data, quantity}) {
                     }}
                 >
                     <CartesianGrid strokeDasharray="3 3"/>
-                    <Brush travellerWidth={30}/>
+                    <Brush
+                        travellerWidth={30}
+                        width={chartWidth() * 0.8}
+                        dataKey="tanggal"
+                        x={chartWidth() * 0.1}
+                    />
                     <XAxis dataKey="tanggal"/>
                     <YAxis/>
                     <Tooltip/>
@@ -224,5 +232,6 @@ function Chart({data, quantity}) {
                 </LineChart>
             </Flex>
         </Box>
+
     );
 }
