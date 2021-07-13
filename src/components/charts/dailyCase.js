@@ -131,24 +131,29 @@ function Chart({ data, quantity }) {
           <Legend verticalAlign="top" height={36} />
           <Line
             type="monotone"
+            name="Positif"
             dataKey={quantity === "harian" ? "positif" : "positif_kumulatif"}
+            // dataKey
             stroke="#E53E3E"
             dot={false}
           />
           <Line
             type="monotone"
+            name="Dirawat"
             dataKey={quantity === "harian" ? "dirawat" : "dirawat_kumulatif"}
             stroke="#ED8936"
             dot={false}
           />
           <Line
             type="monotone"
+            name="Sembuh"
             dataKey={quantity === "harian" ? "sembuh" : "sembuh_kumulatif"}
             stroke="#82ca9d"
             dot={false}
           />
           <Line
             type="monotone"
+            name="Meninggal"
             dataKey={
               quantity === "harian" ? "meninggal" : "meninggal_kumulatif"
             }
