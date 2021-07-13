@@ -44,6 +44,7 @@ export default function DailyCase({mainData, ...props}) {
             <RadioQuantity setQuatity={setQuatity}/>
             {mainData ? (
                 <>
+                    <Text mt={3} fontSize={"xs"}>Klik label di legenda untuk menyembunyikan data label tersebut</Text>
                     <Chart data={chartData} quantity={quantity}/>
                 </>
             ) : (
