@@ -116,7 +116,18 @@ function Chart({data, quantity}) {
         sembuh: 1,
         meninggal: 1
     });
-
+    const [hidden, setHidden] = useState({
+        positif: false,
+        dirawat: false,
+        sembuh: false,
+        meninggal: false
+    });
+    // const handleMouseEnter = (e) => {
+    //     setOpacity({...opacity, [e.dataKey]: 0.5})
+    // };
+    // const handleMouseLeave = (e) => {
+    //     setOpacity({...opacity, [e.dataKey]: 1})
+    // };
     const handleMouseEnter = useCallback(
         (o) => {
             const {dataKey} = o;
@@ -124,7 +135,6 @@ function Chart({data, quantity}) {
         },
         [opacity, setOpacity]
     );
-
     const handleMouseLeave = useCallback(
         (o) => {
             const {dataKey} = o;
@@ -132,6 +142,17 @@ function Chart({data, quantity}) {
         },
         [opacity, setOpacity]
     );
+    // const selectKey = (e) => {
+    //     setHidden({...hidden, [e.dataKey]: !hidden[e.dataKey]});
+    // };
+    const selectKey = useCallback(
+        (h) => {
+            const {dataKey} = h;
+            setHidden({...hidden, [dataKey]: !hidden[dataKey]});
+        },
+        [hidden, setHidden]
+    );
+
     return (
         <Box>
             <Flex justifyContent="center" mt={5}>
@@ -156,6 +177,7 @@ function Chart({data, quantity}) {
                         height={36}
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
+                        onClick={selectKey}
                     />
                     <Line
                         type="monotone"
@@ -164,6 +186,8 @@ function Chart({data, quantity}) {
                         strokeOpacity={opacity.positif}
                         stroke="#E53E3E"
                         dot={false}
+                        hide={hidden.positif}
+                        isAnimationActive={false}
                     />
                     <Line
                         type="monotone"
@@ -172,6 +196,8 @@ function Chart({data, quantity}) {
                         strokeOpacity={opacity.dirawat}
                         stroke="#ED8936"
                         dot={false}
+                        hide={hidden.dirawat}
+                        isAnimationActive={false}
                     />
                     <Line
                         type="monotone"
@@ -180,6 +206,8 @@ function Chart({data, quantity}) {
                         strokeOpacity={opacity.sembuh}
                         stroke="#82ca9d"
                         dot={false}
+                        hide={hidden.sembuh}
+                        isAnimationActive={false}
                     />
                     <Line
                         type="monotone"
@@ -190,6 +218,8 @@ function Chart({data, quantity}) {
                         strokeOpacity={opacity.meninggal}
                         stroke="#000"
                         dot={false}
+                        hide={hidden.meninggal}
+                        isAnimationActive={false}
                     />
                 </LineChart>
             </Flex>
