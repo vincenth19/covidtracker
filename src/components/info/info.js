@@ -273,7 +273,7 @@ export default function Info() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <Text>Cari/Memberi Donor Darah Konvalesen</Text>
+                    <Text>Cari/Memberi Donor Darah Konvalesen (Website)</Text>
                   </Link>
                 </ListItem>
               </Stack>
@@ -361,7 +361,7 @@ export default function Info() {
               <Stack>
                 <ListItem>
                   <Link
-                    href="https://bit.ly/SiranapIndo"
+                    href="https://yankes.kemkes.go.id/app/siranap/"
                     target="_blank"
                     rel="noreferrer"
                   >
