@@ -15,13 +15,16 @@ export default function TableProvince({...props}) {
     customSearchRender: debounceSearchRender(500),
     filter: false,
     enableNestedDataAccess: '.',
+    draggableColumns: {enabled: true},
   };
   const cols = [
     {
       name: "provinsi",
       label: "Provinsi",
       options: {
+        draggable: false,
         sort: true,
+        viewColumns: false,
         filterType: "textField",
         customHeadLabelRender: (columnMeta) => {
           let colHead = (
