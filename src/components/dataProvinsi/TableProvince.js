@@ -13,7 +13,7 @@ export default function TableProvince({...props}) {
     rowsPerPageOptions: [10, 20, 34],
     responsive: "simple",
     customSearchRender: debounceSearchRender(500),
-    filter: false,
+    filter: true,
     enableNestedDataAccess: '.',
     draggableColumns: {enabled: true},
   };
@@ -25,7 +25,7 @@ export default function TableProvince({...props}) {
         draggable: false,
         sort: true,
         viewColumns: false,
-        filterType: "textField",
+        filterType: "multiselect",
         customHeadLabelRender: (columnMeta) => {
           let colHead = (
               <Text
@@ -46,7 +46,7 @@ export default function TableProvince({...props}) {
       label: "Kasus",
       options: {
         sort: true,
-        filterType: "textField",
+        filter: false,
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
             let val = localCaseData[dataIndex].kasus;
@@ -78,7 +78,7 @@ export default function TableProvince({...props}) {
       label: "Kasus per Hari",
       options: {
         sort: true,
-        filterType: "textField",
+        filter: false,
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
             let val = localCaseData[dataIndex].penambahan.positif;
@@ -110,7 +110,7 @@ export default function TableProvince({...props}) {
       label: "Dirawat",
       options: {
         sort: true,
-        filterType: "textField",
+        filter: false,
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
             let val = localCaseData[dataIndex].dirawat;
@@ -142,7 +142,7 @@ export default function TableProvince({...props}) {
       label: "Sembuh",
       options: {
         sort: true,
-        filterType: "textField",
+        filter: false,
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
             let val = localCaseData[dataIndex].sembuh;
@@ -174,7 +174,7 @@ export default function TableProvince({...props}) {
       label: "Sembuh per Hari",
       options: {
         sort: true,
-        filterType: "textField",
+        filter: false,
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
             let val = localCaseData[dataIndex].penambahan.sembuh;
@@ -206,7 +206,7 @@ export default function TableProvince({...props}) {
       label: "Meninggal",
       options: {
         sort: true,
-        filterType: "textField",
+        filter: false,
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
             let val = localCaseData[dataIndex].meninggal;
@@ -238,7 +238,7 @@ export default function TableProvince({...props}) {
       label: "Meninggal per Hari",
       options: {
         sort: true,
-        filterType: "textField",
+        filter: false,
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
             let val = localCaseData[dataIndex].penambahan.meninggal;
@@ -271,7 +271,7 @@ export default function TableProvince({...props}) {
       options: {
         display: false,
         sort: true,
-        filterType: "textField",
+        filter: false,
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
             let val = localCaseData[dataIndex].jenis_kelamin['laki-laki'];
@@ -304,7 +304,7 @@ export default function TableProvince({...props}) {
       options: {
         display: false,
         sort: true,
-        filterType: "textField",
+        filter: false,
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
             let val = localCaseData[dataIndex].jenis_kelamin['perempuan'];
@@ -337,7 +337,7 @@ export default function TableProvince({...props}) {
       options: {
         display: false,
         sort: true,
-        filterType: "textField",
+        filter: false,
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
             let val = localCaseData[dataIndex].kelompok_umur['0-5'];
@@ -370,7 +370,7 @@ export default function TableProvince({...props}) {
       options: {
         display: false,
         sort: true,
-        filterType: "textField",
+        filter: false,
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
             let val = localCaseData[dataIndex].kelompok_umur['6-18'];
@@ -403,7 +403,7 @@ export default function TableProvince({...props}) {
       options: {
         display: false,
         sort: true,
-        filterType: "textField",
+        filter: false,
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
             let val = localCaseData[dataIndex].kelompok_umur['19-30'];
@@ -436,7 +436,7 @@ export default function TableProvince({...props}) {
       options: {
         display: false,
         sort: true,
-        filterType: "textField",
+        filter: false,
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
             let val = localCaseData[dataIndex].kelompok_umur['31-45'];
@@ -469,7 +469,7 @@ export default function TableProvince({...props}) {
       options: {
         display: false,
         sort: true,
-        filterType: "textField",
+        filter: false,
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
             let val = localCaseData[dataIndex].kelompok_umur['46-59'];
@@ -502,7 +502,7 @@ export default function TableProvince({...props}) {
       options: {
         display: false,
         sort: true,
-        filterType: "textField",
+        filter: false,
         customBodyRenderLite: (dataIndex) => {
           if (dataIndex <= 33) {
             let val = localCaseData[dataIndex].kelompok_umur['≥ 60'];
