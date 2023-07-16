@@ -1,0 +1,28 @@
+{
+  "short_name": "CovidTracker",
+  "name": "CovidTracker Indonesia",
+  "icons": [
+    {
+      "src": "virus.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "Virus192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "Virus512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#EB5569",
+  "background_color": "#f9f9f9"
+}
