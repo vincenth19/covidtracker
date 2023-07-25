@@ -19,7 +19,7 @@ import { GiTombstone } from "react-icons/gi";
 import CountUp from "react-countup";
 import UpdateTime from "../updateTime/updateTime";
 import ApiError from "../shared_comp/apiError/apiError";
-import useCovidStatistics from "../../hooks/useCovidStatistics";
+import useCovidDataToday from "../../hooks/useCovidDataToday";
 
 const transformData = (data) => {
   if (!data || data.length === 0) {
@@ -28,15 +28,21 @@ const transformData = (data) => {
       data: null,
     };
   }
+
   const extractedData = data[0];
-  const caseDate = extractedData?.time && new Date(extractedData?.time);
+  const caseDate =
+    extractedData?.last_update && new Date(extractedData?.last_update);
   const formattedDate =
     caseDate &&
     new Intl.DateTimeFormat("id-ID", { dateStyle: "full" }).format(caseDate);
-  const cases = extractedData?.cases ?? 0;
+  const cases = extractedData?.confirmed ?? 0;
+  const casesDiff = extractedData?.confirmed_diff ?? 0;
   const deaths = extractedData?.deaths ?? 0;
-  const active = extractedData?.cases?.active ?? 0;
-  const recovered = extractedData?.cases?.recovered ?? 0;
+  const deathsDiff = extractedData?.deaths_diff ?? 0;
+  const active = extractedData?.active_diff ?? 0;
+  const activeDiff = extractedData?.active_diff ?? 0;
+  const recovered = extractedData?.recovered ?? 0;
+  const recoveredDiff = extractedData?.recovered_diff ?? 0;
 
   return {
     date: formattedDate,
@@ -46,20 +52,20 @@ const transformData = (data) => {
         iconColor: "red.500",
         icon: <RiVirusFill />,
         cardTitle: "TOTAL KASUS POSITIF",
-        data: cases.total,
+        data: cases,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
-        changes: cases.new,
+        changes: casesDiff,
       },
       {
         iconBg: "gray.100",
         iconColor: "gray.500",
         icon: <GiTombstone />,
         cardTitle: "TOTAL KEMATIAN",
-        data: deaths.total,
+        data: deaths,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
-        changes: deaths.new,
+        changes: deathsDiff,
       },
       {
         iconBg: "orange.100",
@@ -69,7 +75,7 @@ const transformData = (data) => {
         data: active,
         increaseArrowColor: "red.500",
         decreaseArrowColor: "teal.500",
-        changes: null,
+        changes: activeDiff,
       },
       {
         iconBg: "teal.100",
@@ -79,14 +85,14 @@ const transformData = (data) => {
         data: recovered,
         increaseArrowColor: "teal.500",
         decreaseArrowColor: "red.500",
-        changes: null,
+        changes: recoveredDiff,
       },
     ],
   };
 };
 
 export default function KopitCase() {
-  const [loading, caseData, error] = useCovidStatistics(transformData);
+  const [loading, caseData, error] = useCovidDataToday(transformData);
   return (
     <Box>
       <HStack>
@@ -151,11 +157,9 @@ export default function KopitCase() {
                           <Flex alignItems="center" fontSize="0.8rem">
                             {key.changes ? (
                               <Flex color="gray.600">
-                                <Text>{key.changes[0]}</Text>
+                                <Text>+</Text>
                                 <Text>
-                                  <CountUp
-                                    end={parseInt(key.changes.slice(1), 10)}
-                                  />
+                                  <CountUp end={key.changes} />
                                 </Text>
                               </Flex>
                             ) : null}
