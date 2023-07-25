@@ -23,10 +23,10 @@ export default function Footer() {
   const SOURCE_LINKS = useMemo(
     () => [
       {
-        title:
-          "Kasus, kematian, rawatan, kesembuhan, vaksinasi, data provinsi:",
-        link: "https://github.com/vincenth19/covidtracker-backend",
-        linkText: "API sendiri, data diambil dari Pemerintah Indonesia",
+        title: "Kasus, kematian, rawatan, kesembuhan:",
+        link: "https://github.com/CSSEGISandData/COVID-19",
+        linkText:
+          "Johns Hopkins University Center for Systems Science and Engineering (JHU CSSE) dari API oleh CSSEGISandData",
       },
     ],
     []
@@ -44,12 +44,13 @@ export default function Footer() {
         fontSize={["sm", "md"]}
       >
         <Flex wrap="wrap" color="gray.500">
-          <Text>Designed & created by </Text>
+          <Text>Designed & created by</Text>
           <Link
             target="_blank"
             rel="noreferrer"
             ml={[0, 1]}
-            href="https://vincenth19.pages.dev"
+            href="https://vincenth19.vercel.app"
+            style={{ marginLeft: 3 }}
           >
             <strong>Vincent Haryadi</strong>
           </Link>
