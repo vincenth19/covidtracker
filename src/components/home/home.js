@@ -6,20 +6,22 @@ import {
   Link,
   Button,
   Flex,
-  Heading,
-  VStack,
+  // Heading,
+  // VStack,
 } from "@chakra-ui/react";
 
 import { NavLink } from "react-router-dom";
 import { RiCloseCircleLine, RiInformationFill } from "react-icons/ri";
-import { FaPrayingHands } from "react-icons/fa";
 import KopitCase from "./kopitCase";
-import Vaccination from "./vaccination";
-import DailyCase from "../charts/dailyCase";
-import RiskProfile from "./riskProfile";
-import DailyVacc from "../charts/dailyVacc";
-import DailyTesting from "../charts/dailyTesting";
-import Testing from "./testing";
+import VaccChart from "../kemkesTableau/vaccCharts";
+
+// import { FaPrayingHands } from "react-icons/fa";
+// import Vaccination from "./vaccination";
+// import DailyCase from "../charts/dailyCase";
+// import RiskProfile from "./riskProfile";
+// import DailyVacc from "../charts/dailyVacc";
+// import DailyTesting from "../charts/dailyTesting";
+// import Testing from "./testing";
 
 export default function Home() {
   const [showInfo, setShowInfo] = useState(true);
@@ -47,10 +49,11 @@ export default function Home() {
           </VStack> */}
           <Stack mt={7} spacing={2}>
             <KopitCase />
+            <VaccChart />
             {/* <Vaccination changesCounter={changesCounter} />
             <RiskProfile />
             <Testing changesCounter={changesCounter} /> */}
-            <Box>
+            {/* <Box>
               <Text
                 fontWeight="bold"
                 fontSize="2xl"
@@ -61,12 +64,12 @@ export default function Home() {
               </Text>
               <Stack spacing={5}>
                 <DailyCase />
-                {/* <DailyVacc />
+                <DailyVacc />
                 <DailyTesting />
 
-                <KemkesCharts /> */}
+                <KemkesCharts />
               </Stack>
-            </Box>
+            </Box> */}
           </Stack>
         </Box>
       </Box>
