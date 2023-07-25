@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Text, Box } from "@chakra-ui/react";
+import { Text, Box, HStack } from "@chakra-ui/react";
+import { RiSyringeFill } from "react-icons/ri";
 import ProvinceVaccChart from "./provinceVaccChart";
 import CityVaccChart from "./cityVaccChart";
 import Loading from "../loading";
@@ -20,9 +21,14 @@ export default function KemkesCovidCharts() {
 
   return (
     <>
-      <Text mt={5} fontSize="xl" fontWeight="bold">
-        Data Vaksinasi KemKes
-      </Text>
+      <HStack>
+        <Text fontSize="4xl" color="blue.400">
+          <RiSyringeFill />
+        </Text>
+        <Text mt={5} fontSize="xl" fontWeight="bold">
+          Data Vaksinasi Kementrian Kesehatan
+        </Text>
+      </HStack>
       <Radios
         radioOptions={["nasional", "kota"]}
         radioName="area"
