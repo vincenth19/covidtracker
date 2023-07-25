@@ -1,7 +1,6 @@
 import { Flex, Stack, Text, Link } from "@chakra-ui/react";
 import {
   RiInformationFill,
-  RiSyringeFill,
   RiAlarmWarningFill,
   RiHome2Fill,
 } from "react-icons/ri";
@@ -12,11 +11,6 @@ const NAV_LINKS = [
     path: "/home",
     icon: <RiHome2Fill />,
     text: "Beranda",
-  },
-  {
-    path: "/vaccination",
-    icon: <RiSyringeFill />,
-    text: "Vaksinasi",
   },
   {
     path: "/info",
@@ -72,7 +66,7 @@ export default function NavbarMobile({ ...props }) {
         </Text>
 
         <Link
-          href="https://covid19.go.id/pelaporan-mandiri"
+          href="https://isoman.kemkes.go.id/panduan"
           target="_blank"
           rel="noreferrer"
         >

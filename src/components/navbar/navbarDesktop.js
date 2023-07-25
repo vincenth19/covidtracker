@@ -31,10 +31,6 @@ export default function NavbarDesktop({ ...props }) {
         text: "Beranda",
       },
       {
-        path: "/vaccination",
-        text: "Vaksinasi",
-      },
-      {
         path: "/info",
         text: "Info Bantuan",
       },
@@ -116,7 +112,7 @@ export default function NavbarDesktop({ ...props }) {
             );
           })}
           <Link
-            href="https://covid19.go.id/pelaporan-mandiri"
+            href="https://isoman.kemkes.go.id/panduan"
             target="_blank"
             rel="noreferrer"
           >
@@ -127,11 +123,11 @@ export default function NavbarDesktop({ ...props }) {
             size="sm"
             colorScheme="red"
             variant="outline"
-            href="https://vincenth19.pages.dev"
+            href="https://vincenth19.vercel.app"
             target="_blank"
             rel="noreferrer"
           >
-            About Me
+            Tentang Saya
           </Button>
         </Stack>
       </Flex>

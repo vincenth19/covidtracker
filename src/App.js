@@ -4,7 +4,6 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
 import Home from "./components/home/home";
 import Footer from "./components/footer";
-import DataProvinsi from "./components/dataProvinsi/dataProvinsi";
 import Info from "./components/info/info";
 
 function App() {
@@ -15,9 +14,6 @@ function App() {
           <Navbar />
           <Container maxW="container.lg" mb={["5rem", "5rem", "5rem", 0]}>
             <Switch>
-              <Route path="/vaccination">
-                <DataProvinsi />
-              </Route>
               <Route path="/info">
                 <Info />
               </Route>
